@@ -6,8 +6,8 @@ and first name and surname if flag = 2
 """
 
 import sys
-path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\data\empRecord.csv"
-
+path=r"C:\Users\om\PycharmProjects\python_All\data\empRecord.csv"
+operation_flag = sys.argv[1]
 fnameList=[]
 fullNameList=[]
 cnt=0
@@ -21,7 +21,7 @@ for line in open(path):
         fullNameList.append([fname,lname])
 
 
-operation_flag = sys.argv[1]
+
 operation_flag=int(operation_flag)
 if operation_flag==1:
  print(fnameList)

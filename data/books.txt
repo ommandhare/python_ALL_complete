@@ -1,0 +1,25 @@
+102,Dasbodh,Ramadas Swami,504,2000
+103,Agnipankh,APJ Abdul Kalam,244,200
+104,Let us C,Yashavant Kanitkar,250,300
+105,Pointer in C,Yashavant Kanitkar,340,300
+106,Unix Shell Scripting,Yashavant Kanitkar,250,200
+107,Python,Guido Van Rossum,360,10000
+108,python pandas, Guido Van Rossum,410,1230
+109,Java,oracle,324,230
+110,Power BI ,Microsoft Ltd,510,650
+111,Mrutyunjay,Shivaji Sawant,388,600
+112,Raja Shivachatrapati, Babasaheb Purandare,455,2000
+113,Manache Shlok,Ramdas Swami,10,100
+114,Atomic Habits,James Clear,200,299
+115,21 Laws of Leadership,John Maxwell,200,399
+116,15 Laws of Growth,John Maxwell,250,299
+117,25 Ways to Win People,John Maxwell,275,299
+118,Goals, Brian Tracy,125,150
+119,Eat That Frog,Brian Tracy,130,150
+120,Kiss That Frog,Brian Tracy,125,150
+121,Time Management,Brian Tracy,125,150
+122,Chava,Shivaji Sawant,250,500
+123,Das Dongari Rahato,Go Ni Dandekar,250,500
+124,Pavana Kathacha Dhondi,Go Ni Dandekar,230,500
+125,Karma, Jaggi Vasudev,240,400
+126,Death, Jaggi Vasudev,230,300

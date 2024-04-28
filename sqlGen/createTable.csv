@@ -1,0 +1,9 @@
+Table_name,column_name,data_type,col_type,constraint
+tran_hdr,tran_id,str,column,primary key
+tran_hdr,member_id,int,column,not null
+tran_hdr,store_id,int,column,not null
+tran_hdr,tran_dt,date,column,not null
+tran_dtl,tran_id,str,column,primary key
+tran_dtl,product_id,int,column,primary key
+tran_dtl,amount,int,column,
+tran_dtl,qty,int,column,not null

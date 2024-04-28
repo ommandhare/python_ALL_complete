@@ -1,0 +1,31 @@
+## This yaml file supports values as dictionary
+client1:
+  name: Rushi
+  companySize: 500
+  type: manufacturing
+client2:
+  name: Aditya
+  companiSize: 1000
+  type: >
+          construction
+          building construction
+          hotel construction
+          test
+client3:
+  name: Mihir
+  companySize: 300
+  type: |
+          Stock Trading Firm with
+                                  large portfolio....... o my god
+client4:
+  name: Sarvesh
+  companySize: 10
+  type: law firm
+client5:
+  name: Alisha
+  companySize: 200
+  type: Restaurant
+client6:
+  name: Soham
+  companySize: 1000
+  type: software

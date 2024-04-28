@@ -1,0 +1,4 @@
+table_name,dimensions,time_dimension,facts,fact_cd
+tran_hdr,store_id#member_id,tran_dt,disc,a
+tran_dtl,product_id,tran_dt,qty#amt,b
+,

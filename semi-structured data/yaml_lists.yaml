@@ -1,0 +1,17 @@
+## This yaml file supports values as lists in block sequence
+sports:
+  - soccer
+  - football
+  - basketball
+  - cricket
+  - hockey
+  - table tennis
+countries:
+  - USA
+  - India
+  - China
+  - Germany
+  - France
+  - Spain
+# subjects is written in flow sequence
+subjects: [maths,english,science,history]

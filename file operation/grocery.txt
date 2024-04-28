@@ -1,0 +1,3 @@
+butter,45
+coconut,30
+apple,50

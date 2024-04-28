@@ -1,0 +1,6 @@
+table_name,column_name,data_type,col_type,constraint
+tran_hdr,tran_id,string,column,not null
+tran_hdr,member_id,int,column,not null
+tran_hdr,store_id,int,column,not null
+tran_hdr,tran_dt,string,column,NA
+tran_hdr,NA,primary_key(tran_id#tran_dt),constraint,NA

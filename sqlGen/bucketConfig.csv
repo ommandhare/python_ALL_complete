@@ -1,0 +1,5 @@
+column,min,max,bucketSize,windowSeq
+amt,1,100,35,1
+amt,100,500,5,2
+amt,500,1000,150,3
+qty,1,500,5,1

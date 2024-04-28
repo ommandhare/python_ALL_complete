@@ -1,0 +1,9 @@
+# this is simple yaml file
+key1: Test
+key2: MyTest
+key3: YourTest
+key4: AllTest
+key5: 8
+key6: 10.3
+key7: null
+key8: true

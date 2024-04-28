@@ -1,0 +1,3 @@
+butter,30
+mango,70
+tomato,20

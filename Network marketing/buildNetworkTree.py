@@ -1,13 +1,24 @@
 ##
 import networkMember as m
-
-path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\Network marketing\networkMarketing.csv"
+path=r"C:\Users\om\PycharmProjects\python_All\Network marketing\networkMarketing.csv"
 cnt=0
+def getMemberHierarchyMx(mId,mDict,level,maxL):
+    mOb = mDict[mId]
+    p = mOb.parentId
+    if(p == -1000 or level== maxL):
+        #printRecurData(level,"-")
+        print(mOb.firstName)
+        hk = mOb.firstName
+        return hk
+    else:
+        #printRecurData(level,"-")
+        print(mOb.firstName,"==>",end="")
+        hk = getMemberHierarchyMx(mOb.parentId,mDict,level+1,maxL)
+        return hk +"->" + mOb.firstName
+
 def printRecurData(lv,ch):
     for i in range(lv):
         print(ch,end="")
-
-
 
 def getMemberHierarchy(mId,mDict,level):
     mOb = mDict[mId]
@@ -22,26 +33,6 @@ def getMemberHierarchy(mId,mDict,level):
         print(mOb.firstName,"==>",end="")
         hk = getMemberHierarchy(mOb.parentId,mDict,level+1)
         return hk +"->" + mOb.firstName
-
-
-def getMemberHierarchyML(mId,mDict,level,max_l):
-    mOb = mDict[mId]
-    p = mOb.parentId
-    if (p == -1000 or level > (max_l-1)):
-        print(mOb.firstName)
-        hk = mOb.firstName
-        return hk
-    else:
-        mOb = mDict[mId]
-        p = mOb.parentId
-        #printRecurData(level,"-")
-        print(mOb.firstName,"==>",end="")
-        hk = getMemberHierarchyML(mOb.parentId,mDict,level+1,max_l)
-        return hk +"___>" + mOb.firstName
-
-
-
-
 ## new program --
 # find number of nodes in tree of given node
 def countNodes(id,cDict):
@@ -68,8 +59,6 @@ def findLeafNodes(mId,mDict,cDict,lvl):
     else:
         print("LEAF NODE FOUND:::\nID:",mDict[mId].id,"\tNAME: ",mDict[mId].firstName," AT level: ",lvl)
 
-
-
 memberDict ={} # member id as key and memeber obj as value
 childDict = {} # member id as key and list of child obj as value
 for line in open(path):
@@ -91,25 +80,25 @@ for line in open(path):
 
 print(memberDict)
 print(childDict)
-
 ## browse member dict
 ## for every member print all parent hierarchy of that member
-
 for mId,mObj in memberDict.items():
     print(mId," NAME: ",mObj.firstName)
 
 print("PRINGING MEMBER HIERARCHY")
-hierarchy = getMemberHierarchy(1298,memberDict,0)
+#hierarchy = getMemberHierarchy(1298,memberDict,0)
+hierarchy = getMemberHierarchyMx(1298,memberDict,0,5)
+
 print(hierarchy)
+"""
+m = 1992
+findLeafNodes(1992,memberDict,childDict,0)
 
-hierarchyML = getMemberHierarchyML(1298,memberDict,0,5)
-print("\n")
-print("PRINTING MAX HEIRARCHY  ",hierarchyML)
+c = 1298
+cnt = countNodes(1992,childDict)
+print("NODES UNDER C: ",c," are: ",cnt)
 
-#
-# m = 1992
-# findLeafNodes(1992,memberDict,childDict,0)
-#
-# c = 1298
-# cnt = countNodes(1992,childDict)
-# print("NODES UNDER C: ",c," are: ",cnt)
+## write a recursion that acceptes memberId, memberDict, level and  maxLvl
+## and get member hierarchy till maxLevel
+## hierarchy = getMemberHierarchyML(1298,memberDict,0,5)
+"""

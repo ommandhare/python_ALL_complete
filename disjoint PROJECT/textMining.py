@@ -72,6 +72,7 @@ def getNgramWords(word,ngramlist):
                                 nDict[key]+=[word]
         print(nDict)
 
+
 path = r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\sample.txt"
 
 

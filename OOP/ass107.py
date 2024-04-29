@@ -29,7 +29,7 @@ def find_peaks(stock_data_list):
     return peaks
 
 
-file_name = r'C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\OOP\nseSample'
+file_name = r'C:\Users\om\PycharmProjects\python_All\OOP\nseSample'
 stock_data_list = read_stock_data(file_name)
 peaks = find_peaks(stock_data_list)
 print("Peaks in closing prices:")

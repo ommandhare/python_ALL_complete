@@ -28,7 +28,6 @@ def find_peaks(stock_data_list):
             peaks.append(stock_data_list[i])
     return peaks
 
-
 file_name = r'C:\Users\om\PycharmProjects\python_All\OOP\nseSample'
 stock_data_list = read_stock_data(file_name)
 peaks = find_peaks(stock_data_list)

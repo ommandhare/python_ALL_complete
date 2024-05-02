@@ -4,7 +4,6 @@ Write a program to read data from Product table on mysql and write it to a csv f
 
 import pandas as pd
 import mysql.connector
-import schedule
 import csv
 import time
 
@@ -12,7 +11,7 @@ conn = mysql.connector.connect(
     host='localhost',
     user='root',
     password='0777',
-    database='retail_project'
+    database='retail'
 )
 
 cursor = conn.cursor()
@@ -24,7 +23,7 @@ cursor.execute(query1)
 results1 = cursor.fetchall()
 count = 0
 print(results1)
-prod_path = r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\subprocess\products_by_category.csv"
+prod_path = r"C:\Users\om\PycharmProjects\python_All\mySql with python\products_by_category.csv"
 with open(prod_path, 'w', newline='') as csvfile:
     csv_writer = csv.writer(csvfile, results1)
     csv_writer.writerow(['Category', 'count_of_products'])

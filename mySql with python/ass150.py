@@ -6,7 +6,6 @@ Take user input for category and display all product options in that category.
 """
 
 import mysql.connector
-import pandas
 
 conn=mysql.connector.connect(
     host='localhost',
@@ -50,9 +49,9 @@ print(products_by_category)
 findprod=input("Enter the category  :  ")
 
 for k,v in products_by_category.items():
-    if findprod in products_by_category:
+    if k == findprod:
         print("found")
-        print("Items in ",k, "category :")
-        print(v)
+        print("Items in ",findprod, "category :")
+        print(k,v)
         break;
 

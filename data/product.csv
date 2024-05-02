@@ -1,4 +1,4 @@
-product_id,description,price,category,max_qty
+ID,Name,price,category,qty
 1,Biscuits,1.5,Baked goods,5
 2,Bread,1.25,Baked goods,5
 3,Cheeslings,2.45,Baked goods,5

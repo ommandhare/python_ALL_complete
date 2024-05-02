@@ -5,8 +5,6 @@ aggregate by member, by product and normalize data to get score for every produt
 
 """
 
-
-
 import mysql.connector
 import pandas
 import pandas as pd

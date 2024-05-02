@@ -62,7 +62,7 @@ total_merge=pd.merge(merge1,product_df,on='product_id',how="left")
 
 print(total_merge)
 
-total_merge.to_csv(r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\mySql with python\total.csv")
+total_merge.to_csv(r"C:\Users\om\PycharmProjects\python_All\mySql with python\total.csv")
 
 
 every_category_for_member=total_merge.groupby('member_id')['category'].count()

@@ -11,7 +11,7 @@ conn = mysql.connector.connect(
     host='localhost',
     user='root',
     password='0777',
-    database='retail_project'
+    database='retail'
 )
 
 cursor = conn.cursor()
@@ -22,7 +22,7 @@ cursor.execute(query1)
 results1 = cursor.fetchall()
 
 print(results1)
-prod_path = r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\subprocess\product.csv"
+prod_path = r"C:\Users\om\PycharmProjects\python_All\data\product.csv"
 with open(prod_path, 'w', newline='') as csvfile:
     csv_writer = csv.writer(csvfile, results1)
     csv_writer.writerow(['ID', 'Name', 'price', 'category', 'qty'])

@@ -7,9 +7,7 @@ find aggregate monthly sale (in pandas) and write it to csv and SQL Table (month
 
 import pandas as pd
 import mysql.connector
-import schedule
-import csv
-import time
+
 
 conn = mysql.connector.connect(
     host='localhost',
@@ -35,6 +33,6 @@ grouped = df.groupby('tran_dt')
 avg_sale=grouped['amt'].mean()
 
 print(avg_sale)
-avg_path = r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\mySql with python\avg_monthly_sale.csv"
+avg_path = r"C:\Users\om\PycharmProjects\python_All\mySql with python\avg_monthly_sale.csv"
 
 avg_sale.to_csv(avg_path)

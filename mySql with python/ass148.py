@@ -42,7 +42,7 @@ df_max_sale=df.groupby('member_id')['total_sale'].max()
 
 print(df_max_sale)
 
-df_max_sale.to_csv(r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\mySql with python\max_salemem.csv")
+df_max_sale.to_csv(r"C:\Users\om\PycharmProjects\python_All\mySql with python\max_salemem.csv")
 
 print("####  MIN SALE PER member")
 
@@ -50,4 +50,4 @@ df_min_sale=df.groupby('member_id')['total_sale'].min()
 
 print(df_min_sale)
 
-df_max_sale.to_csv(r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\mySql with python\min_salemem.csv")
+df_min_sale.to_csv(r"C:\Users\om\PycharmProjects\python_All\mySql with python\min_salemem.csv")

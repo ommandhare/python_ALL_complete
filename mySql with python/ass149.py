@@ -1,7 +1,7 @@
 """
 Write a program to read product data from SQL in python program save it in dict
 (save id as key and object as value).
-Take user input for product description and find if product exists and if it exists then display produt details.
+Take user input for product description and find if product exists and if it exists then display product details.
 
 """
 
@@ -33,14 +33,13 @@ for row in result:
 print(product)
 
 search_description=input("enter product desc  : ")
-print(search_description)
+# print(search_description)
 
 # for product_id, product_info in product.items():
 #  print(product_info)
 for product_id, product_info in product.items():
-        if search_description == product_info:
+        if search_description in product_info:
           print("found")
           print(product_id, ":" ,product_info)
-        else:
-         print("not found")
-         break
+
+

@@ -5,7 +5,6 @@ and insert this data in SQL table category_num_products
 
 import pandas as pd
 import mysql.connector
-import schedule
 import csv
 import time
 
@@ -26,11 +25,11 @@ results = cursor.fetchall()
 count = 0
 print(results)
 
-# hijjf
 for line in results:
-    query = f"INSERT INTO {'product_by_category'} VALUES {tuple(line)}"
-    # for itr in range(len(data))
-    cursor.execute(query)
+      print(tuple(line))
+      query = f"INSERT INTO {'category_num_products'} VALUES {tuple(line)}"
+     # for itr in range(len(data))
+      cursor.execute(query)
 
 conn.commit()
 

@@ -1,15 +1,36 @@
-def get_common_disjoints(pair):
+newList=[]
+# def get_1st_common_disjoints(pair):
+#     itemList = []
+#     resultList=[]
+#     print("################")
+#     idx=pair.strip().split("_")
+#     print(idx)
+#     print(len(idx))
+#     for j in idx:
+#         j=int(j)
+#         print(nDict[j])
+#         commonList=[]
+#         cnt=0
+#         for item in nDict[j]:
+#            if item in itemList:
+#                 commonList.append(item)
+#            elif item in commonList:
+#                continue
+#            else:
+#                itemList.append(item)
+#
+#     # print("common List:::",commonList)
+#     return commonList
+
+
+def get_common_disjoints(pair,idx):
     itemList = []
     resultList=[]
     print("################")
-    idx=pair.strip().split("_")
-    print(idx)
-
     for j in idx:
         j=int(j)
         print(nDict[j])
         commonList=[]
-        cnt=0
         for item in nDict[j]:
            if item in itemList:
                 commonList.append(item)
@@ -17,11 +38,8 @@ def get_common_disjoints(pair):
                continue
            else:
                itemList.append(item)
-
     print("common List:::",commonList)
-
-
-
+    get_common_disjoints(pair,commonList)
 
 
 
@@ -50,10 +68,18 @@ for key ,value in nDict.items():
         # print(pair)
         pairList.append(pair)
 
-#
 
 
+# for pair in pairList:
+#  get_common_disjoints(pair)
+
+
+print(" common list:::")
 for pair in pairList:
- get_common_disjoints(pair)
+ List=[]
+ print(pair)
+ idx = pair.strip().split("_")
+ get_common_disjoints(pair,idx)
+
 
 

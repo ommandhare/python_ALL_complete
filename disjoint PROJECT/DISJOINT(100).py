@@ -13,13 +13,13 @@ def countOccurances(path):
             else:
                 desc = line.strip().split(",",1)
                 cnt+=1
-                if len(desc) > 1:  # Check if there are at least two fields
-                    words = desc[1].strip().split(" ")
-                    for word in words:
-                        if word not in wordDict:
-                            wordDict[word] = 1
-                        else:
-                            wordDict[word] += 1
+                words = desc[1].strip().split(" ")
+                for word in words:
+                    print(word)
+                    if word not in wordDict:
+                        wordDict[word] = 1
+                    else:
+                        wordDict[word] += 1
 
         return wordDict
 
@@ -90,9 +90,7 @@ def combination(sortedIDs):
              pairList.append(j)
          comboDict[i]=pairList
     return comboDict
-#
-#
-#
+
 def DISJOINT(comboDict):
     disjoint={}
     setList=[]
@@ -133,39 +131,39 @@ path=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\item_desc.csv"
 
 # COUNT OCCURANCES
 wordDict=countOccurances(path)
-# print(wordDict)
+print(wordDict)
 
-# MAKING TUPLES
-allList=[]
-for k,v in wordDict.items():
-   row=(k,v)
-   allList.append(row)
-
-# print(allList)
-
-
-# SORTED LIST
-sortedList=sortList(allList)
-# print(sortedList)
+# # MAKING TUPLES
+# allList=[]
+# for k,v in wordDict.items():
+#    row=(k,v)
+#    allList.append(row)
 #
-# # GIVING ID TO EACH SORTED
-sortedIdDict=giveId(sortedList)
-# print(sortedIdDict)
-
-ls=getList(path)
-#
-# # REPLACING WORD TO ID
-idReplacedList=replaceId(sortedIdDict)
-# print(idReplacedList)
+# # print(allList)
 #
 #
-sortedIDs=sortIDs(idReplacedList)
-# print(sortedIDs)
-
-
-comboDict=combination(sortedIDs)
-# print(comboDict)
+# # SORTED LIST
+# sortedList=sortList(allList)
+# # print(sortedList)
+# #
+# # # GIVING ID TO EACH SORTED
+# sortedIdDict=giveId(sortedList)
+# # print(sortedIdDict)
 #
-print("rest done")
+# ls=getList(path)
+# #
+# # # REPLACING WORD TO ID
+# idReplacedList=replaceId(sortedIdDict)
+# # print(idReplacedList)
+# #
+# #
+# sortedIDs=sortIDs(idReplacedList)
+# # print(sortedIDs)
 #
-DISJOINT(comboDict)
+#
+# comboDict=combination(sortedIDs)
+# # print(comboDict)
+# #
+# print("rest done")
+# #
+# DISJOINT(comboDict)

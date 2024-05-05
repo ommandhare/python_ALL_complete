@@ -3,5 +3,5 @@ id,description
 113307,hi my name is om veergo
 112849,li goalite name butter soft lis
 13232,lilies dfgd manuri mme ndabjnd veer
-1122112,senalis memlie soffy mannns veeraj
-32323,softies soffy sommeralissara veerdhawal
+1122112,senalis memlie s/offy m"annns veeraj
+32323,softies soffy sommera/lissara veerdhawal

@@ -1,8 +1,9 @@
-path=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\sample.txt"
+path=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\realSample.txt"
 
-word="ommandhare"
+word=("carrots")
+word=word.upper()
 List=[]
-n=2
+n=3
 
 for i in range(len(word)-n+1):
      ngram=''
@@ -13,6 +14,8 @@ for i in range(len(word)-n+1):
 print(List)
 nDict={}
 cnt=0
+
+
 with open(path, 'r') as file:
     next(file)
     for line in file:

@@ -5,7 +5,7 @@ build small application to query json file
 
 import json
 
-path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\semi-structured data\json2.json"
+path=r"C:\Users\om\PycharmProjects\python_All\data\json2.json"
 
 with open(path) as f:
     data=json.load(f)

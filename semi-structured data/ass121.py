@@ -6,7 +6,7 @@ build small application to query xml file
 
 import xml.etree.ElementTree as ET
 
-path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\countryTest.xml"
+path=r"C:\Users\om\PycharmProjects\python_All\data\countryTest.xml"
 
 def query(findTag):
     found_tags=tree.findall('.//'+findTag)

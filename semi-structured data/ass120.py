@@ -5,7 +5,7 @@ read yaml file and print all lines, search specific tags
 
 import yaml
 
-path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\semi-structured data\yaml_simple.yaml"
+path=r"C:\Users\om\PycharmProjects\python_All\data\yaml_simple.yaml"
 
 with open(path) as f:
     data=yaml.safe_load(f)

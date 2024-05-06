@@ -10,6 +10,7 @@
         <neighbor name="myCountry" direction="fantastic"/>
     </country>
     <country name="Singapore" area="2000">
+        "OM IS TEXT"
         <rank>4</rank>
         <year>2011</year>
         <gdppc>59900</gdppc>

@@ -52,7 +52,7 @@ print(Saturdays)
 
 
 
-path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\Date_time\count_saturday.csv"
+path=r"C:\Users\om\PycharmProjects\python_All\Date_time\count_saturday.csv"
 
 def write_to_csv(Saturdays):
     with open(path, 'w', newline='') as csvfile:

@@ -16,7 +16,6 @@ with open(path, 'r') as file:
                 # print(words)
                 for word in words:
                     wordCnt += 1
-
                     if "/" in word:
                         new=word.split("/")
                     elif "-" in word:

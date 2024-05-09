@@ -137,12 +137,13 @@ def finalOUTPUT(xy,d):
     print("Y:::",y)
 
 def main():
-    # eq1=input("enter the first equation::::")
+    eq1=input("enter the first equation::::")
     # eq1 = "4x-3y=2"
-    eq1 = "2x+3y=1"
-    # eq2=input("enter the second equation::::")
+    # eq1 = "2x+3y=1"
+    eq2=input("enter the second equation::::")
     # eq2 = "8x+5y=1"
-    eq2 = "5x+2y=1"
+    # eq2
+    # = "5x+2y=1"
 
 
     first,second=getValues(eq1,eq2)

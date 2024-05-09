@@ -1,4 +1,4 @@
-path=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\cleanedData.csv"
+path= r"/disjoint PROJECT/cleanedData.csv"
 pathOut=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\wordCount.csv"
 def count_Words(path):
     cntDict={}

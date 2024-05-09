@@ -1,5 +1,5 @@
 
-path=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\item_descr.csv"
+path= r"/disjoint PROJECT/item_descr.csv"
 pathOut=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\cleanedData.csv"
 wordList=[]
 wordCnt=0

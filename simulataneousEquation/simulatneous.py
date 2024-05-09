@@ -99,14 +99,50 @@ def getInverse(a:list):
         inMatrix.append(a[3])
         return inMatrix
 
+def multiplyandADDinverseWithB(a,b):
+    Q = []
 
+    value = a[0] * b[0]
+    Q.append(value)
 
+    value = a[1] * b[1]
+    Q.append(value)
+
+    value = a[2] * b[0]
+    Q.append(value)
+
+    value = a[3] * b[1]
+    Q.append(value)
+
+    print(Q)
+
+    xy = []
+
+    value = Q[0] + Q[1]
+    xy.append(value)
+
+    value = Q[2] + Q[3]
+    xy.append(value)
+    # print(xy)
+    return xy
+
+def finalOUTPUT(xy,d):
+    x=xy[0]/d
+    y=xy[1]/d
+
+    print(f"{xy[0]}/{d}")
+    print(f"{xy[1]}/{d}")
+
+    print("X:::",x)
+    print("Y:::",y)
 
 def main():
     # eq1=input("enter the first equation::::")
-    eq1 = "4x-3y=2"
+    # eq1 = "4x-3y=2"
+    eq1 = "2x+3y=1"
     # eq2=input("enter the second equation::::")
-    eq2 = "8x+5y=1"
+    # eq2 = "8x+5y=1"
+    eq2 = "5x+2y=1"
 
 
     first,second=getValues(eq1,eq2)
@@ -138,6 +174,16 @@ def main():
     print("INVERSE MATRIX")
     inMatrix=getInverse(A)
     print(inMatrix)
+
+    print("###################################")
+    print("Multiply inverse matrix by B")
+    xy=multiplyandADDinverseWithB(inMatrix,B)
+    print("x and y are found::::")
+    print(xy)
+
+    print("###################################")
+    print("FINAL OUTPUT:::::")
+    finalOUTPUT(xy,Determinant)
 
 
 

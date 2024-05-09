@@ -1,26 +1,32 @@
-a=[4,-3,8,5]
-b=[]
-print(a[0],a[3])
-a[3],a[0]=a[0],a[3]
-print("Swap")
-print(a[0],a[3])
-b.append(a[0])
-if a[1]>0:
-  a[1]=-a[1]
-  print(a[1])
-else:
-    a[1]=abs(a[1])
-    print(a[1])
-b.append(a[1])
+a=[5, 3, -8, 4]
+b=[2,1]
+Q=[]
 
-if a[2]>0:
-  a[2]=-a[2]
-  print(a[2])
-else:
-    a[2]=abs(a[2])
-    print(a[2])
-b.append(a[2])
-b.append(a[3])
+value=a[0]*b[0]
+print(value)
+Q.append(value)
 
-print("INVERSE")
-print(b)
+value=a[1]*b[1]
+print(value)
+Q.append(value)
+
+value=a[2]*b[0]
+print(value)
+Q.append(value)
+
+value=a[3]*b[1]
+print(value)
+Q.append(value)
+
+
+print(Q)
+
+xy=[]
+
+value=Q[0]+Q[1]
+xy.append(value)
+
+value=Q[2]+Q[3]
+xy.append(value)
+
+print(xy)

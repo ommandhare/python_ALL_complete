@@ -22,5 +22,5 @@ def levenshtein_distance(s1, s2):
 
 # Example usage
 s1 = "butter"
-s2 = "lutter"
+s2 = "butteryyy"
 print("Levenshtein distance between '{}' and '{}': {}".format(s1, s2, levenshtein_distance(s1, s2)))

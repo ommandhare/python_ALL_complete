@@ -18,8 +18,9 @@ for i in range(len(word)-n+1):
 print(List)
 
 firstGram=List[0]
+secondGram=List[1]
 print(firstGram)
-
+print(secondGram)
 
 nDict={}
 fList=[]
@@ -28,7 +29,7 @@ for line in open(path):
     # print(words)
     for word in words:
         # print(word)
-        if firstGram in word:
+        if (firstGram in word[:3] and secondGram in word[:6]):
             fList.append(word)
 
 

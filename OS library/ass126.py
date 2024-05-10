@@ -1,26 +1,30 @@
 """
-Write a program to find out duplicate files and move duplicate files to a separate folder named filesToBeArchived
+Write a program to find out duplicate files and move duplicate files
+to a separate folder named filesToBeArchived
 
 """
 
+import shutil
 import os
+import hashlib
+def moveFile(source,destination):
+    try:
+        shutil.move(source,destination)
+        print(f"{source} moved to {destination}")
+    except Exception as e:
+        print(f"{source} failed to move {destination} \n\tError:{e}")
 
-root_dir = r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\reward project"
+def duplicateFile(path):
+    fileHashSet = set()
+    for root,dirList,fileList in os.walk(path):
+        for file in fileList:
+            filepath=os.path.join(root,file)
+            with open(filepath,'rb') as f:
+                fileHash = hashlib.sha256(f.read()).hexdigest()
+            if fileHash not in fileHashSet:
+                fileHashSet.add(fileHash)
+            else:
+                moveFile(filepath,r"C:\Users\om\PycharmProjects\python_All\duplic" +file)
 
-
-fileLIST=[]
-seenList=[]
-duplicateList=[]
-for dir,subdir,files in os.walk(root_dir):
-    if files in seenList:
-        duplicateList.append(files)
-    else:
-        seenList.append(files)
-
-for files in os.listdir(root_dir):
-    print(files)
-
-
-print(seenList)
-print(duplicateList)
+duplicateFile(r"C:\Users\om\PycharmProjects\python_All\testcopyfolder")
 

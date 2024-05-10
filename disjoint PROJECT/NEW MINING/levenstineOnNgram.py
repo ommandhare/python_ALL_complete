@@ -26,7 +26,7 @@ def levenshtein_distance(s1, s2):
 
 
 
-worda=("STRAWBERRY")
+worda=("carrot")
 worda=worda.upper()
 List=[]
 n=3
@@ -55,12 +55,10 @@ for line in open(path):
              fList.append(word)
 
 
-# print(fList)
+print(fList)
 
 
-for i in fList:
-
-    distance=levenshtein_distance(worda,i)
-    if distance == 4:
-     print(i)
-     print(distance)
+# for i in fList:
+#     distance=levenshtein_distance(worda,i)
+#     print(i)
+#     print(distance)

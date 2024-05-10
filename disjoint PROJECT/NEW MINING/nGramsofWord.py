@@ -4,15 +4,15 @@ IT FINDS FIRST NGRAMS IN CLEANED DATA  AND RETURN WORD WHICH HAVE FIRST NGRAM OF
 
 path=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\cleanedData.csv"
 
-word=("carrots")
-word=word.upper()
+worda=("strawberry")
+worda=worda.upper()
 List=[]
 n=3
 
-for i in range(len(word)-n+1):
+for i in range(len(worda)-n+1):
      ngram=''
      for j in range(n):
-         ngram+= word[i+j]
+         ngram+= worda[i+j]
      List.append(ngram)
 
 print(List)
@@ -30,8 +30,11 @@ for line in open(path):
     for word in words:
         # print(word)
         if (firstGram in word[:3] and secondGram in word[:6]):
-            fList.append(word)
+             fList.append(word)
 
 
 print(fList)
+
+
+
 

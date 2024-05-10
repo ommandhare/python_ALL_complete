@@ -1,5 +1,5 @@
-a="butter"
-b="matter"
+a="cat"
+b="pat"
 alen=len(a)
 blen=len(b)
 
@@ -24,10 +24,10 @@ print("########################")
 result=0
 for i in range(reps):
     if a[0+i]==b[0+i]:
-      print("inside")
+      # print("inside")
       cnt+=1
     else:
-         print("No")
+         # print("No")
          result+=1
 
 

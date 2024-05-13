@@ -1,13 +1,19 @@
 import re
 
-str=("my name iss oom ismy friend is hrushi saish  welcome  come on ")
+str=[['5 FLUID'],
+['4 PACK'],
+['0 FLUID']]
 
-pattern="om?"
-result=re.findall(pattern,str)
-print(result)
+List=[]
 
-pattern="ism+"
-result=re.findall(pattern,str)
-print(result)
+for i in str:
+    for j in i:
+        item=j.strip().split(" ")
+        List.append(item)
 
-# print(f"--{pattern}-- occured {len(result)} times in string")
+print(List)
+
+
+for i in List:
+    for j in i:
+        print(j)

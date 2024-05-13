@@ -20,7 +20,7 @@ print("**********************************************")
 
 
 # $ to find out line end with word or not
-pattern = r'Bye'
+pattern = r'Bye$'
 match = re.findall(pattern, text)
 print("\n\nTEXT: ",text)
 print("PATTERN: ",pattern,"\nMATCH: ",match)

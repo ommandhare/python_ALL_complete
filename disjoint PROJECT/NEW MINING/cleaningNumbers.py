@@ -1,24 +1,25 @@
-path=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\item_descr.csv"
+import re
 
-nDict={}
-newClean=[]
-cnt=0
-c=0
+path = r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\item_descr.csv"
+
+
+# str='MARTHA WHITE CHOCOLATE CHIP 9 MUFFIN MIX'
+# result=re.split(r"[^a-zA-Z\s]+",str)
+# print(result)
+
+
+wordList=[]
 for line in open(path):
-        # print(line)
-        desc = line.strip().split(",", 2)
-        if len(desc) > 1:  # Check if there are at least two fields
-            words = desc[1].strip().split(" ")
-            for word in words:
-                # print(word)
-                if word.isdigit():
-                   cnt+=1
-                   print("FOUND:::")
-                   print(desc,"--------",word)
-                for w in word:
-                    size=len(word)
-                    if w.isdigit():
-                        print("ALPHA NUMERIC::",word)
+    # print(line)
+    desc = line.strip().split(",")
+    # print(desc)
+    desc=desc[1].split(",")
+    # print(desc)
+    str=''
+    for let in desc:
+        str+=let
+    # print(str)
+    result=re.split(r"[^a-zA-Z\s]+",str)
+    wordList.append(result)
 
-
-# print("Total count:: ",cnt)
+print(wordList)

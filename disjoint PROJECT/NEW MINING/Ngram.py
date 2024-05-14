@@ -22,6 +22,8 @@ def get_1_2_ngramList(firstGram,secondGram):
         words=desc.strip().split(",")
         for w in words:
             if (firstGram in w[:3] and secondGram in w[:6]):
+                   if w in fList:
+                       continue
                    fList.append(w)
     # print(fList)
     return fList

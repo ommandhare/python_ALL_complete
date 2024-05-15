@@ -21,12 +21,33 @@ def get_1_2_ngramList(firstGram,secondGram):
     for desc in open(path):
         words=desc.strip().split(",")
         for w in words:
-            if (firstGram in w[:3] and secondGram in w[:6]):
+            if (firstGram in w and secondGram in w):
                    if w in fList:
                        continue
                    fList.append(w)
     # print(fList)
     return fList
+
+def get_matched_70(nlist):
+    matched = []
+    fList = []
+    # print(firstGram,secondGram)
+    for desc in open(path):
+        words = desc.strip().split(",")
+        for w in words:
+              for i in nlist:
+                   if i in w:
+                      matched.append(i)
+                      diff=len(matched)/len(nlist)
+                      diff=diff*100
+                      if diff >= 70:
+                          if i!=w:
+                            fList.append(w)
+    return fList
+
+
+
+
 
 
 
@@ -50,7 +71,8 @@ for word in wordList:
  if len(ngrams)<2:
      continue
  else:
-     fList=get_1_2_ngramList(ngrams[0],ngrams[1])
+     # fList=get_1_2_ngramList(ngrams[0],ngrams[1])
+     fList=get_matched_70(ngrams)
      if word not in nDict:
       nDict[word]=fList
 

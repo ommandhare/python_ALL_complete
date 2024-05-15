@@ -7,9 +7,8 @@ import copy
 
 list=[1,2,3,4,[1,23,45,5]]
 
-shallow= copy.copy(list)
+
 deep= copy.deepcopy(list)
-print(shallow,id(shallow))
 print(deep,id(deep))
 
 print("Change")
@@ -19,5 +18,5 @@ print(list[0])
 
 print("result ")
 
-print(list)
-print(deep)
+print(list,id(list))
+print(deep,id(deep))

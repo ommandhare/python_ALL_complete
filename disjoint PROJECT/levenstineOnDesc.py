@@ -1,5 +1,6 @@
-path=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\wordSample"
+path=r"C:\Users\om\PycharmProjects\python_All\disjoint PROJECT\item_descr.csv"
 
+str="DEBI LILLY COLUMN VASE TALL"
 def levenshtein_distance(s1, s2):
     m, n = len(s1), len(s2)
     # Initialize the matrix
@@ -20,19 +21,10 @@ def levenshtein_distance(s1, s2):
     # print(dp[m][n])
     return dp[m][n]
 
-wordList=[]
 for line in open(path):
-    words=line.strip().split(",")
-    # print(words)
-    for word in words:
-        wordList.append(word)
-
-
-for line in open(path):
-    words=line.strip().split(",")
-    # print(words)
-    for word in words:
-       for i in wordList:
-            dist=levenshtein_distance(word,i)
-            if dist<=2:
-             print(f"{word}--{i}=={dist}")
+    desc=line.strip().split(",",2)
+    desc=desc[1]
+    dist=levenshtein_distance(str,desc)
+    print(f"{str}")
+    print(f"{desc}")
+    print(f"{dist}")

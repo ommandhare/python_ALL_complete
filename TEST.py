@@ -1,5 +1,7 @@
 w="carrot"
-n=3
+wordList=["parrot","water"]
+
+n=2
 nList=[]
 for i in range(len(w) - n + 1):
     ngram = ''
@@ -9,16 +11,13 @@ for i in range(len(w) - n + 1):
 
 print(nList)
 
-tWord="carroe"
-
 matched=[]
-for i in nList:
-    if i in tWord:
+for word in wordList:
+ for i in nList:
+    if i in word:
+        print(i,word)
         matched.append(i)
-
-diff=len(matched)/len(nList)
-print(diff*100)
-
+    print(matched)
 
 
 

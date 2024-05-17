@@ -10,7 +10,7 @@ def codes(number, alpha, current_code='', i=0, result=[]):
         return
 
     digit = int(number[i])
-    print(result)
+    # print(result)
     for letter in alpha[digit]:
         codes(number, alpha, current_code + letter, i + 1, result)
 
@@ -18,7 +18,7 @@ def codes(number, alpha, current_code='', i=0, result=[]):
 
 
 
-alpha={1:['a','b','c'],2:['d','e','f']}
+alpha={1:['a','b','c'],2:['d','e','f'],3:['n','g','y']}
 
 
 

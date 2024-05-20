@@ -3,10 +3,6 @@ read file book.txt store author name as key and list of books as value.
 Print author name and list of books written by that author as output
 
 """
-
-
-
-
 authorDict={}
 with open(r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\data\books.txt") as file:
     for line in file:

@@ -19,7 +19,8 @@ for line in open(path):
             # print(desc)
     new=''
     for word in desc:
-        new += word + " "
+        # if re.match(r"[\w\s]", word):
+         new += word + " "
     newLineList.append(new)
 
 with open(pathOut,'w') as f:

@@ -40,26 +40,26 @@ for item in aNumeric:
             mList.append(result)
 
 # print(mList)
-measureDict={}
+measureDict = {}
 for i in mList:
     str=''
     for j in i:
-        item=re.split(r" ",j)
+        item=re.split(r" ", j)
         # print(item)
         for k in item:
             if k.isdigit():
                 continue
             else:
-               measure=re.split("[0-9]",k)
+               measure=re.split("[0-9]", k)
                for m in measure:
-                   # print(m)
+                   #print(m)
                    if not m:
                        continue
                    else:
                        if m in measureDict:
-                           measureDict[m]+=1
+                           measureDict[m] += 1
                        else:
-                           measureDict[m]=1
+                           measureDict[m] = 1
 
 f=open(pathOut,"w")
 for k,v in measureDict.items():

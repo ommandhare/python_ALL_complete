@@ -1,5 +1,5 @@
 import re
-str="my name is 12om13 mandhare 4.10z"
+str="my name is 12om13 mand,hare"
 
 
 
@@ -19,7 +19,6 @@ for i in range(len(data)):
 print(data)
 new=""
 for word in data:
-    if re.match(r"[\w\s]",word):
      new+=word+" "
 
 print(new)

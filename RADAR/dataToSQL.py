@@ -9,6 +9,6 @@ print(data)
 
 engine = create_engine('mysql+pymysql://root:0777@localhost:3306/radar')
 
-data.to_sql('item_desc', con=engine, if_exists='replace', index=False)
+# data.to_sql('item_desc', con=engine, if_exists='replace', index=False)
 
 print("done")

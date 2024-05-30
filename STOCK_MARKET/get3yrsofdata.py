@@ -9,6 +9,8 @@ start_date = end_date - timedelta(days=3*365)
 
 symbols = ["RELIANCE", "TCS", "INFY", "HDFCBANK"]  # Add your 2000 symbols here
 
+symbols = ["RELIANCE", "TCS", "INFY", "HDFCBANK"]  # Add your 2000 symbols here
+
 #
 # data=get_history(symbols[0],start_date,end_date)
 # print(data)

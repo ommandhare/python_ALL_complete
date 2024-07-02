@@ -10,7 +10,7 @@ import productAmt as pa
 
 # creating two dates
 startDate = Date(2021,1,1)
-endDate= Date(2023,12,31)
+endDate= Date(2024,12,31)
 
 
 # timedelta between two dates
@@ -102,7 +102,7 @@ tran_hdr = tran_hdr.drop_duplicates()
 print(tran_hdr)     #LIST TO DATAFRAME
 
 
-tran_dtl.to_csv(r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\analysis project\tran_dtl.csv",index=False)
+tran_dtl.to_csv(r"C:\Users\om\PycharmProjects\python_All\analysis_project\data creation files\tran_dtl.csv",index=False)
 #DATAFRAME TO csv THROUGH PANDAS
-tran_hdr.to_csv(r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\analysis project\tran_hdr.csv",index=False)
+tran_hdr.to_csv(r"C:\Users\om\PycharmProjects\python_All\analysis_project\data creation files\tran_hdr.csv",index=False)
 

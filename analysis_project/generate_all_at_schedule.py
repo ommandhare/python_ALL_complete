@@ -1,10 +1,4 @@
-import schedule
-import time
-import os
 from datetime import datetime
-import pandas as pd
-import mysql.connector
-import csv
 
 
 def mockCurrentDates():
@@ -74,7 +68,6 @@ def mockCurrentDates():
 
 
 def append():
-    import pandas as pd
     import mysql.connector
     import csv
 

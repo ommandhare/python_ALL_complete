@@ -4,7 +4,6 @@
 from datetime import(
     datetime as dt,
     date,
-    time,
     timedelta)
 from random import randint
 import productAmt as pa

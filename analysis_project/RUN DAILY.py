@@ -12,7 +12,7 @@ storetoriginal=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\a
 
 k=input(f"if you want run {currendate}  data press q key : ")
 if k=="q":
-    os.system(f"python {generate}")
+    os.system( f"python {generate}")
     os.system(f"python {query}")
     os.system(f"python {storetoriginal}")
 

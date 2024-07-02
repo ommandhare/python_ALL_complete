@@ -1,21 +1,20 @@
-a = [2, 3, 4, 55, 33, 4, 55, 343, 66, 77, 88, 99]
+str1=input("enter:")
+str2=input("enter:")
 
+first=[]
+for i in str1:
+    first.append(i)
 
-def max_sum_non_adjacent(arr):
-    incl = 0
-    excl = 0
+second=[]
+for j in str2:
+    second.append(j)
 
-    for i in arr:
-        # Current max excluding i
-        new_excl = max(incl, excl)
+res=''
 
-        # Current max including i
-        incl = excl + i
-        excl = new_excl
+for k in first:
+    for v in second:
+        if k==v:
+            if k in v:
+               res+=v
 
-    # Return maximum of incl and excl
-    return max(incl, excl)
-
-
-max_sum = max_sum_non_adjacent(a)
-print("Maximum sum of non-adjacent numbers:", max_sum)
+print(res)

@@ -6,7 +6,7 @@ get a character from user and check if the character is number or vovel or conco
 c=input("enter the character: ")
 
 
-if  c in ['a','e','i','o','u']:
+if c in ['a','e','i','o','u']:
     print("Vowel")
 elif c.isdigit():
     print("number")

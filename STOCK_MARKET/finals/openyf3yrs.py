@@ -63,5 +63,4 @@ data_df = pd.DataFrame(all_data, columns=headers)
 
 data_df.to_csv('historical_stock_data.csv', index=False)
 
-
 print(data_df)

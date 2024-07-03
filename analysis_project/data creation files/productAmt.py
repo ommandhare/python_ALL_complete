@@ -4,13 +4,12 @@ path = r"C:\Users\om\PycharmProjects\python_All\analysis_project\daily_files\pro
 productAmt = {}
 i = 1
 
-
 for line in open(path):
     # print(line)
-    productId,description,amt,category,maxQty = line.strip().split(',')
+    productId,description,amt,category,max_qty = line.strip().split(',')
     if i != 1:
+        # print(productId)
         productAmt[productId] = amt
     i+=1
     
 print(productAmt)
-

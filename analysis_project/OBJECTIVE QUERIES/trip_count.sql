@@ -11,5 +11,5 @@ select member_id, per_date,count(*) as trip_count from
         group by th.member_id, date(td.tran_dt),td.tran_id
         order by member_id )s
 group by member_id,per_date
- ;
+;
          -- WHERE td.tran_dt < current_date() AND td.tran_dt >= DATE_SUB(CURRENT_DATE(), interval 1 year)

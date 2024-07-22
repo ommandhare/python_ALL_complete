@@ -17,7 +17,7 @@ conn = mysql.connector.connect(
 cursor = conn.cursor()
 
 # product_csv generator
-query1 = (""" select * from product;""")
+query1 = (""" select product_id,price from product;""")
 cursor.execute(query1)
 results1 = cursor.fetchall()
 

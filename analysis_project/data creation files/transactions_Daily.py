@@ -26,7 +26,7 @@ def mockCurrentDates():
     amtLst = []
 
     for itr in range(1):
-        trans = randint(1,50) #no of transactions done in a day
+        trans = randint(10,15) #no of transactions done in a day
         # print(no)
         memberlst = []
         for i in range(1,trans+1):
@@ -74,7 +74,7 @@ def mockCurrentDates():
                             price = float(price)
                             amt = qty * price # calculating total amt
                             amt = round(amt, 2)
-                            currentDateTime = dt.now()
+                            currentDateTime = date.today() + timedelta(days=1)
                             tranId = currentDateTime.strftime('%Y-%m-%dT') + currentDateTime.strftime('%H-%M-%S-%f') + '_' + str(i)
                             tranIdLst.append(tranId)
                             startDateLst.append(currentDateTime.strftime('%Y-%m-%d'))
@@ -88,11 +88,11 @@ def mockCurrentDates():
     tran_dtl = pd.DataFrame(df1)
     tran_dtl['tran_dt'] = pd.to_datetime(tran_dtl['tran_dt'])
     print(tran_dtl)
-
-
     # it will append to SQL DB and make CSV
-    # tran_dtl.to_csv(r"C:\Users\om\PycharmProjects\python_All\analysis_project\data creation files\tran_dtl.csv",index=False,header=False)
-    # tran_dtl.to_sql('retail_project', engine, if_exists='append', index=False)
+    tran_dtl.to_sql('tran_dtl', engine, if_exists='append', index=False)
+    print("tran_dtl to SQL......")
+
+
 
 
     df2 = {'tran_id':tranIdLst, 'store_id':storeIdLst, 'member_id': idLst, 'tran_dt':startDateLst}
@@ -100,20 +100,13 @@ def mockCurrentDates():
     tran_hdr = tran_hdr.drop_duplicates()
     tran_hdr['tran_dt'] = pd.to_datetime(tran_hdr['tran_dt'])
     print(tran_hdr)
-
     #it will append to SQL DB and make CSV
-    # tran_hdr.to_csv(r"C:\Users\om\PycharmProjects\python_All\analysis_project\data creation files\tran_hdr.csv",index=False,header=False)
-    # tran_hdr.to_sql('retail_project', engine, if_exists='append', index=False)
+    tran_hdr.to_sql('tran_hdr', engine, if_exists='append', index=False)
+    print("tran_hdr to SQL......")
 
     return
 
 
-# print(len(tranIdLst))
-# print(len(idLst))
-# print(len(storeIdLst))
-# print(len(productIdLst))
-# print(len(qtyLst))
-# print(len(amtLst))
-# print(len(startDateLst))
+
 
 mockCurrentDates()

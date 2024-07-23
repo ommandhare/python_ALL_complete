@@ -11,7 +11,7 @@ import productAmt as pa
 from sqlalchemy import create_engine
 
 begin = date(2021,1,1)
-end = date(2023,12,31)
+end = date(2024,7,23)
 
 DATABASE_URI = 'mysql+pymysql://root:0777@localhost:3306/retail_project'
 engine = create_engine(DATABASE_URI)
@@ -93,28 +93,24 @@ def mockBetweenDates(startDate, endDate):
     tran_dtl = pd.DataFrame(df1)
     tran_dtl['tran_dt'] = pd.to_datetime(tran_dtl['tran_dt'])
     print(tran_dtl)
-    # tran_dtl.to_csv(r"C:\Users\om\PycharmProjects\python_All\analysis_project\data creation files\tran_dtl.csv",index=False,header=False)
-    # tran_dtl.to_sql('retail_project', engine, if_exists='append', index=False)
+    tran_dtl.to_sql('tran_dtl', engine, if_exists='append', index=False)
+    print("tran_dtl to SQL......")
 
 
     df2 = {'tran_id':tranIdLst, 'store_id':storeIdLst, 'member_id': idLst, 'tran_dt':startDateLst}
     tran_hdr = pd.DataFrame(df2)
     tran_hdr = tran_hdr.drop_duplicates()
+
     tran_hdr['tran_dt'] = pd.to_datetime(tran_hdr['tran_dt'])
     print(tran_hdr)
-    # tran_hdr.to_csv(r"C:\Users\om\PycharmProjects\python_All\analysis_project\data creation files\tran_hdr.csv",index=False,header=False)
-    # tran_hdr.to_sql('retail_project', engine, if_exists='append', index=False)
+    tran_hdr.to_sql('tran_hdr', engine, if_exists='append', index=False)
+    print("tran_hdr to SQL......")
     return
 
 
 
 
-# print(len(tranIdLst))
-# print(len(idLst))
-# print(len(storeIdLst))
-# print(len(productIdLst))
-# print(len(qtyLst))
-# print(len(amtLst))
-# print(len(startDateLst))
+
+
 
 mockBetweenDates(begin, end)

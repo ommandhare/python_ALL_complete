@@ -11,7 +11,7 @@ import productAmt as pa
 from sqlalchemy import create_engine
 
 begin = date(2021,1,1)
-end = date(2024,7,23)
+end = date.today()
 
 DATABASE_URI = 'mysql+pymysql://root:0777@localhost:3306/retail_project'
 engine = create_engine(DATABASE_URI)

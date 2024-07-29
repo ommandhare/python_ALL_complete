@@ -3,7 +3,7 @@ use retail_project;
 
 select * from member;
 
- -- AVERAGE MONTHLY SALE FOR EACH MEMBER
+ -- AVERAGE MONTHLY SALE FOR EACH product
  
  select member_id,year,month,round(avg(sum)) average_monthly_Sale
 from 
@@ -14,4 +14,4 @@ from
 	 order by member_id) s
  group by member_id,year,month
  ;
-  
+ 

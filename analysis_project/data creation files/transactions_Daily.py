@@ -74,7 +74,7 @@ def mockCurrentDates():
                             price = float(price)
                             amt = qty * price # calculating total amt
                             amt = round(amt, 2)
-                            currentDateTime = date.today() + timedelta(days=1)
+                            currentDateTime = date.today()
                             tranId = currentDateTime.strftime('%Y-%m-%dT') + currentDateTime.strftime('%H-%M-%S-%f') + '_' + str(i)
                             tranIdLst.append(tranId)
                             startDateLst.append(currentDateTime.strftime('%Y-%m-%d'))

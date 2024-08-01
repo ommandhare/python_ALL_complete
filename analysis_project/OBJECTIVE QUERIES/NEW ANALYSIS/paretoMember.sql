@@ -19,5 +19,5 @@ order by total desc
 )s
 group by member_id,y,total
 )s1
--- where cumulative_percentage<=80 
+where cumulative_percentage<=80 
 

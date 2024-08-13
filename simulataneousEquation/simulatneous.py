@@ -12,6 +12,7 @@ def getValues(eq1,eq2):
         else:
             lst1.append(ex)
 
+
     for ex in range(len(eq1)):
         if lst1[ex - 1] == "-":
             # print(lst1[ex])

@@ -3,7 +3,7 @@
  select target1, target2,concat(target1,"_",target2) as combination_pair,combo_count, count as target1_count,(combo_count/count) as affinity_score
  from
  (
-select d1.product_id as target1 ,d2.product_id as target2,count(d1.tran_id) as combo_count from tran_dtl d1
+select d1.product_id as target1,d2.product_id as target2,count(d1.tran_id) as combo_count from tran_dtl d1
 join tran_dtl d2 on d1.tran_id=d2.tran_id
 where d1.product_id!=d2.product_id  -- and d1.product_id='100'
 group by d1.product_id,d2.product_id 

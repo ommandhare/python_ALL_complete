@@ -88,6 +88,10 @@ def mockCurrentDates():
     tran_dtl = pd.DataFrame(df1)
     tran_dtl['tran_dt'] = pd.to_datetime(tran_dtl['tran_dt'])
     print(tran_dtl)
+
+
+
+
     # it will append to SQL DB and make CSV
     tran_dtl.to_sql('tran_dtl', engine, if_exists='append', index=False)
     print("tran_dtl to SQL......")
@@ -100,6 +104,10 @@ def mockCurrentDates():
     tran_hdr = tran_hdr.drop_duplicates()
     tran_hdr['tran_dt'] = pd.to_datetime(tran_hdr['tran_dt'])
     print(tran_hdr)
+
+
+
+
     #it will append to SQL DB and make CSV
     tran_hdr.to_sql('tran_hdr', engine, if_exists='append', index=False)
     print("tran_hdr to SQL......")

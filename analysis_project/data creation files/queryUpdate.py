@@ -16,8 +16,9 @@ def update(sql_query,table_name):
 
     df = pd.read_sql_query(sql_query, engine)
 
-    df.to_sql(table_name, engine, if_exists='replace', index=False)
+    df.to_sql(table_name, engine, if_exists='append', index=False)
     print("Done to sql...")
 
 
 update(trip_count,"trip_count")
+

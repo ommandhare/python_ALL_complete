@@ -3,9 +3,9 @@
 
 select *,
  CASE 
-   WHEN reward_points BETWEEN 0.95 and 1 THEN 'PLATINUM '
-	   WHEN reward_points BETWEEN 0.7 and 0.95 THEN 'GOLD'
-	   WHEN reward_points BETWEEN 0.3 and 0.7 THEN 'SILVER '
+   WHEN reward_points BETWEEN 0.095 and 1 THEN 'PLATINUM '
+	   WHEN reward_points BETWEEN 0.07 and 0.095 THEN 'GOLD'
+	   WHEN reward_points BETWEEN 0.03 and 0.07 THEN 'SILVER '
 	   WHEN reward_points BETWEEN 0 and 0.3 THEN 'BRONZE'
 		
 END as REWARD_TITLE

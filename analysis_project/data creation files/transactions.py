@@ -95,7 +95,7 @@ def mockBetweenDates(startDate, endDate):
     print(tran_dtl)
 
 
-    tran_dtl.to_sql('tran_dtl', engine, if_exists='append', index=False)
+    tran_dtl.to_sql('tran_dtl', engine, if_exists='replace', index=False)
     print("tran_dtl to SQL......")
 
 
@@ -107,7 +107,7 @@ def mockBetweenDates(startDate, endDate):
 
 
 
-    tran_hdr.to_sql('tran_hdr', engine, if_exists='append', index=False)
+    tran_hdr.to_sql('tran_hdr', engine, if_exists='replace', index=False)
     print("tran_hdr to SQL......")
     return
 

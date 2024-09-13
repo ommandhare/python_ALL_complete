@@ -1,5 +1,4 @@
 -- combination with ratio (affinity score)
- use retail_project;
  select target1, target2,concat(target1,"_",target2) as combination_pair,combo_count, count as target1_count,(combo_count/count) as affinity_score
  from
  (

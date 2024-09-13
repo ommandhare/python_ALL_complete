@@ -3,10 +3,7 @@
 -- reward by member and product_id
 -- ################################
 
-use retail_project;
-truncate table member_product_reward;
--- calculating reward title on basis of reward points
--- insert into member_product_reward 
+
 select * ,
 CASE 
    WHEN REWARD_TITLE = 'PLATINUM' then '15%'

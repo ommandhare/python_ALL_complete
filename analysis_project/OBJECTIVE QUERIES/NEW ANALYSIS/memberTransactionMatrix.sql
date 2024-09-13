@@ -3,11 +3,6 @@
 -- ############################
 -- member transition matrix
 -- ##########################
-use retail_project;
-select * from member_reward_by_trip;
-truncate table member_reward_by_trip;
--- insert into member_reward_by_trip 
-
 select *,
 CASE 
    WHEN membership = 'platinum' then '20%'

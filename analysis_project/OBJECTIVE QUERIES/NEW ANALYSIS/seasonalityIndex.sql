@@ -1,7 +1,6 @@
 -- #########################################################
 -- seasonality index (monthly sale/monthly avg sale)
 -- #########################################################
-use retail_project;
  select *,round(monthly_sale/avg_monthly_sale,1) as seasonality_index
 	from
 		(

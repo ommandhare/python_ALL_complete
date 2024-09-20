@@ -18,9 +18,9 @@ engine = create_engine(DATABASE_URI)
 
 max_date = pd.read_sql_query("Select max(tran_dt) from tran_dtl", engine)
 max_date = max_date['max(tran_dt)'].iloc[0]
-last_date = max_date
+last_date = max_date+timedelta(days=1)
 print(last_date, type(last_date))
-today = dt.today()
+today = dt.today().date()
 print(today, type(today))
 
 

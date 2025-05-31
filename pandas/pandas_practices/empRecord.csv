@@ -1,0 +1,17 @@
+id,first_name,last_name,age,height,sal,manager_id
+10,Pushkaraj,Joshi,35,7,567000,12
+11,Srushti,Patil,10,1,30000,12
+12,Mihir,Shinde,43,5.9,77000,2
+2,Sarvesh,Karanjkar,57,5.9,167000,-1000
+14,Rushi,Pathakji,35,5.9,67000,15
+15,Alisha,Sharma,53,5.9,87000,2
+16,Ameya,Pradhan,35,5.9,67000,15
+17,ila,Bhate,21,5,22000,16
+18,Aditya,Talwalkar,27,5.2,50000,2
+20,Siddhant,Shinde,25,5.5,33000,15
+21,Soham,Thuse,25,5.5,30000,14
+22,Pranav,Pitre,18,5.4,20000,21
+24,Sumedha,Bodas,20,5.4,100000,20
+25,Rutvika,Halagekar,40,5.6,200000,24
+26,Advait,Ingale,57,6,100000,25
+27,Shravani,Patavardhan,25,5.7,30000,12

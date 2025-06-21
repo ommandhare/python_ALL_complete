@@ -19,5 +19,16 @@ print(df)
 # shape
 # print(df.shape)
 #
-# #Summarize
-# print(df.describe())
+# #Stats About Each Columns
+print(df.describe())
+
+
+# print("Sum")
+# print(df.qty.sum())
+
+# print("mean")
+# print(df.qty.mean())
+
+# print("median")
+# print(df.qty.median())
+

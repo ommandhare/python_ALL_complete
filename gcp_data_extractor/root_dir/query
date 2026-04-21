@@ -1,0 +1,5 @@
+SELECT id,count(numb) FROM
+`data-cleaning-428505.newdata.demo2`
+--  WHERE numb > 40
+GROUP BY id
+ORDER BY id;

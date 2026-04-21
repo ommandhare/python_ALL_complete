@@ -5,8 +5,7 @@ from plotly.subplots import make_subplots
 from dash import Dash, dcc, html, Input, Output
 from config import Cfg
 
-
-# LOAD & CLEAN DATA
+# Load and Clean the Data
 df = pd.read_csv(Cfg["DATA_PATH"])
 
 df.columns = (
@@ -97,8 +96,6 @@ app.layout = html.Div([
      Output('sharpe', 'children'),
      Output('drawdown', 'children')],
     Input('symbol', 'value'),
-    # print("Selected MAs:", Cfg["INDICATORS"]["moving_average"])
-    # print("Columns in data:", dff.columns.tolist())
 )
 def update_dashboard(symbol):
 
@@ -110,11 +107,6 @@ def update_dashboard(symbol):
     # KPIs
     total_return, volatility, sharpe, max_dd = calculate_kpis(dff)
 
-    # EMA
-    # if Cfg["EMA"]["enabled"]:
-    #     dff = df[df['symbol'] == symbol].copy()
-
-        # dff['ema'] = dff['close'].ewm(span=Cfg["EMA"]["span"]).mean()
 
     # Chart
     fig = go.Figure()
@@ -147,19 +139,6 @@ def update_dashboard(symbol):
                 line=dict(width=3)
             ))
 
-
-
-
-
-
-    # EMA Line
-    # if Cfg["EMA"]["enabled"]:
-    #     fig.add_trace(go.Scatter(
-    #         x=dff['date'],
-    #         y=dff['ema'],
-    #         mode='lines',
-    #         name=f"EMA {Cfg['EMA']['span']}"
-    #     ))
 
     fig.update_layout(
         title=f"{symbol} Price Chart",

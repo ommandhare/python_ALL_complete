@@ -1,0 +1,12 @@
+﻿file,data_ws,objId,obj,variable,value,type
+f1,_,1,file,name,tempOutput,s
+f1,w1,2,sheet,name,OUTPUT,s
+f1,w1,3,sec1,sec_st_row,1,i
+f1,w1,3,sec1,sec_st_col,2,i
+f1,w1,3,sec1,sec_end_row,2,i
+f1,w1,3,sec1,sec_end_col,-1,i
+f1,w1,3,sec1,format,dGrayWH,s
+f1,w1,4,sec2,sec_st_row,4,i
+f1,w1,4,sec2,sec_st_col,2,i
+f1,w1,4,sec2,tableStyle,SM2,s
+f1,w1,5,pie1,pie,pastel,s

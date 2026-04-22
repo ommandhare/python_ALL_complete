@@ -3,14 +3,11 @@ Cfg = {
 
     "DATE_COLUMN": "date",
     "SYMBOL_COLUMN": "symbol",
+    "DEFAULT_SYMBOL": "DLF",
 
     "CHART_TYPE": "candlestick",# candlestick / line
-     # "RANGE_SLIDER" : True,
+     "RANGE_SLIDER" : False,
 
-    "EMA": {
-        "enabled": True,
-        "span": 20
-    },
 
     "KPIS": {
         "return": True,

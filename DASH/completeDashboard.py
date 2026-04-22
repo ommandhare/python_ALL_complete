@@ -17,8 +17,8 @@ df.columns = (
     .str.replace(")", "")
 )
 
-if 'turnover_₹_cr' in df.columns:
-    df = df.rename(columns={'turnover_₹_cr': 'turnover'})
+# if 'turnover_₹_cr' in df.columns:
+#     df = df.rename(columns={'turnover_₹_cr': 'turnover'})
 
 df[Cfg["DATE_COLUMN"]] = pd.to_datetime(df[Cfg["DATE_COLUMN"]])
 df = df.sort_values(by=Cfg["DATE_COLUMN"])
@@ -59,7 +59,62 @@ def create_gauge(value, title, min_val=0, max_val=60):
         }
     ))
 
-    fig.update_layout(margin=dict(l=10, r=10, t=40, b=10))
+    fig.update_layout(height=200,margin=dict(l=10, r=10, t=40, b=10))
+
+    return fig
+
+
+# line chart
+def mini_line_chart(dff):
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+        x=dff['date'],
+        y=dff['close'],
+        mode='lines'
+    ))
+
+    fig.update_layout(
+        height=120,
+        margin=dict(l=5, r=5, t=5, b=5),
+        xaxis_visible=False,
+        yaxis_visible=False
+    )
+    return fig
+
+
+
+def box_style():
+    return {
+        'height': '25%',
+        'width': '25%',
+        'border': '2px solid black',
+        'padding': '5px'
+    }
+
+
+def drawdown_chart(dff):
+
+    returns = dff['close'].pct_change().fillna(0)
+
+    cumulative = (1 + returns).cumprod()
+    peak = cumulative.cummax()
+    drawdown = (cumulative - peak) / peak
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(
+        x=dff['date'],
+        y=drawdown,
+        fill='tozeroy',
+        mode='lines',
+        name='Drawdown'
+    ))
+
+    fig.update_layout(
+        title="Drawdown",
+        height=200
+    )
 
     return fig
 
@@ -77,7 +132,7 @@ app.layout = html.Div([
         placeholder="Select Stock"
     ),
 
-    # KPI TEXT
+    # KPI TEXT (Top Row)
     html.Div([
         html.Div(id='return', style={'width': '30%', 'display': 'inline-block'}),
         html.Div(id='sharpe', style={'width': '30%', 'display': 'inline-block'}),
@@ -87,82 +142,68 @@ app.layout = html.Div([
     # MAIN CHART
     dcc.Graph(id='chart'),
 
-    # GAUGE (SAFE POSITION)
+    # LOWER DASHBOARD (4 BOXES)
     html.Div([
-        dcc.Graph(id='volatility_gauge')
-    ], style={'height' : '15%','width': '15%', 'margin': 'Left'})
+
+        html.Div([dcc.Graph(id='volatility_gauge')], style=box_style()),
+
+        html.Div([dcc.Graph(id='drawdown_chart')], style=box_style()),
+
+        html.Div([dcc.Graph(id='return_gauge')], style=box_style()),
+    ], style={
+        'display': 'flex',
+        'justifyContent': 'space-between',
+        'alignItems': 'center'})
+
+
 
 ])
 
 
-
-# CALLBACK
 @app.callback(
     [
         Output('chart', 'figure'),
         Output('return', 'children'),
         Output('sharpe', 'children'),
-        Output('drawdown', 'children'),
-        Output('volatility_gauge', 'figure')
+        Output('volatility_gauge', 'figure'),
+        Output('return_gauge', 'figure'),
+        Output('drawdown_chart', 'figure')
     ],
     Input('symbol', 'value')
 )
 def update_dashboard(symbol):
 
     if symbol is None:
-        return go.Figure(), "", "", "", go.Figure()
+        symbol = Cfg["DEFAULT_SYMBOL"]
 
     dff = df[df[Cfg["SYMBOL_COLUMN"]] == symbol].copy()
 
     # KPIs
     total_return, volatility, sharpe, max_dd = calculate_kpis(dff)
 
-    # CHART
+    # MAIN CHART
     fig = go.Figure()
 
-    if Cfg["CHART_TYPE"] == "candlestick":
-        fig.add_trace(go.Candlestick(
-            x=dff['date'],
-            open=dff['open'],
-            high=dff['high'],
-            low=dff['low'],
-            close=dff['close'],
-            name='Price'
-        ))
-    else:
-        fig.add_trace(go.Scatter(
-            x=dff['date'],
-            y=dff['close'],
-            mode='lines',
-            name='Price'
-        ))
-
-    # Moving Averages
-    for ma in Cfg["INDICATORS"]["moving_average"]:
-        if ma in dff.columns:
-            fig.add_trace(go.Scatter(
-                x=dff['date'],
-                y=dff[ma],
-                mode='lines',
-                name=ma.upper(),
-                line=dict(width=2)
-            ))
+    fig.add_trace(go.Scatter(
+        x=dff['date'],
+        y=dff['close'],
+        mode='lines',
+        name='Price'
+    ))
 
     fig.update_layout(
-        title=f"{symbol} Price Chart",
         height=Cfg["APP"]["height"]
     )
 
-    # RETURN
 
     return (
         fig,
-        f"Return: {total_return}%" if Cfg["KPIS"]["return"] else "",
-        f"Sharpe: {sharpe}" if Cfg["KPIS"]["sharpe"] else "",
-        f"Max Drawdown: {max_dd}%" if Cfg["KPIS"]["drawdown"] else "",
-        create_gauge(volatility, "Volatility") if Cfg["KPIS"]["volatility"] else go.Figure()
+        f"Return: {total_return}%",
+        f"Sharpe: {sharpe}",
+        create_gauge(volatility, "Volatility", max_val=100),
+        create_gauge(total_return, "Returns", max_val=300),
+        drawdown_chart(dff)
     )
-
 
 
 # RUN APP

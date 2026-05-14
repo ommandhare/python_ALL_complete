@@ -1,0 +1,585 @@
+,Company,Count
+0,SelfEmployed,1
+1,Capgemini,14
+2,Head Training Professor at Institute of Advance Computing SAGE University Indore,1
+3,IT Consltancy,1
+4,Technoidentity,1
+5,Tata Consultancy Services,83
+6,Walmart,9
+7,Adani Group,1
+8,UnitedHealth Group,4
+9,Confidential,2
+10,Mphasis,1
+11,Accenture,9
+12,Model Developers And Builders,1
+13,Cognizant,19
+14,Freelance,6
+15,ScopeSys Innovation Pvt Ltd,1
+16,Degreed,2
+17,Tata Consulting Engineers,1
+18,Citi,2
+19,Delicious Dabbas Food Chain and co,1
+20,Nimbus Aerospace,1
+21,Walmart Global Tech,11
+22,Cognizant Technology Solutions,2
+23,Arrow ECS,1
+24,phData Inc,16
+25,ALSTOM TRANSPORT,1
+26,IBM,7
+27,Design2Impact Advisory,1
+28,Datacom,1
+29,Infosys,16
+30,Apple,3
+31,Tech Virtue Solutions,1
+32,Ambiata subsidiary of IAG,1
+33,Benchmark IT Solutions,1
+34,Vanderlande,2
+35,Universal Software Corporation,1
+36,Wipro,6
+37,Epsilon,1
+38,Shutterfly Inc,1
+39,KPIT,3
+40,Krios Info Solutions PvtLtd,10
+41,KBR Inc,1
+42,pManifold,1
+43,Zscaler,1
+44,Confluent,2
+45,Selfemployed,8
+46,Proofpoint,1
+47,Nebory,1
+48,Retelzy,2
+49,Kolam Projects,1
+50,Intellify Solutions,1
+51,Aligned Incentives,1
+52,EY,3
+53,Gusto,1
+54,Abbott,2
+55,Self employed,1
+56,Eastern Enterprise,1
+57,zCon Solutions,1
+58,Confederation of Indian Industry,1
+59,Oliver James,1
+60,Crane India,1
+61,Thryv,1
+62,phData,38
+63,Mott MacDonald India india Pvt Ltd,1
+64,GE,1
+65,Adaptive,1
+66,Pertemps Managed Solutions,1
+67,Albertsons Companies,8
+68,GlobalStep,1
+69,Cosmos eSolutions and Services Pvt Ltd,1
+70,COEP Technological University,1
+71,GlobalLogic,1
+72,PwC India,1
+73,Synechron,3
+74,Citizens,1
+75,Bitwise India,2
+76,Canadian Cancer Society,1
+77,Renewable Energy and Infrastructure Projects,1
+78,Field Flow Sales,1
+79,Crane ChemPharma and Energy,1
+80,Emitec Technologies GmbH,1
+81,Infosys BPM,1
+82,Varroc,1
+83,Govt of India,1
+84,Datascan Information Systems,1
+85,Coaction Global,1
+86,Amazon Lab126,1
+87,SuperValu,1
+88,United Natural Foods,1
+89,Nexapp Technologies Private Limited,1
+90,Proventeq,1
+91,Reliance Industries Limited,2
+92,Nokia,1
+93,Databricks,1
+94,The Ahnung Way,1
+95,JEVVRS Business Consulting,1
+96,GSK,1
+97,LTIMindtree,3
+98,TCS,9
+99,Proventeq MEA,1
+100,GNR Solution Pvt Ltd,1
+101,HAWK Gozoop Group,1
+102,Welspun India Limited Mumbai,1
+103,NiCE,2
+104,Radhakrishna Foodland Pvt Ltd,1
+105,Lloyds Technology Centre India,1
+106,FICO,1
+107,High Five Business Solutions,1
+108,Hindustan Petroleum Corporation Limited,1
+109,Vertical Insure Inc,2
+110,Scottfree Analytics LLC,1
+111,Quellant,1
+112,Shriram Sales Corporation,1
+113,Domo,1
+114,Zions Bancorporation,1
+115,Event Industry Awards,1
+116,Centaur Pharmaceuticals Pvt Ltd,1
+117,Expleo Group,1
+118,Visa,4
+119,KONE,1
+120,Roche,1
+121,Yogesh Dandawate,1
+122,FABS International,1
+123,Cyient Europe,1
+124,Krios Infosolutions PvtLtd,1
+125,Bajaj Technology Services,1
+126,wwwstlsoftin,1
+127,Design Fundaz,1
+128,Snowflake,4
+129,Supervalu Inc,1
+130,KBP College of Engg and Poly Satara,1
+131,Nextdata,1
+132,Insight Global,1
+133,Clario,1
+134,Tata Motors,1
+135,ViridiumAI,1
+136,Altair Holidays Pvt Ltd,1
+137,Capgemini Invent,1
+138,INFINITY LABS IT SERVICES LTD,1
+139,DataHub,1
+140,ToneTag,1
+141,The Shri Ram Universal School Pune,1
+142,Wellcome Sanger Institute,1
+143,Ascava Inc,1
+144,Qualis Engineers,1
+145,UPTIQ,1
+146,Parker Lord,1
+147,iConnect Info Solutions,1
+148,ICONNECT INFO SOLUTIONS PRIVATE LIMITED,1
+149,ISMT limited,1
+150,Bentley Systems,1
+151,Digitate,2
+152,Rises Analytics Solutions,1
+153,HSBC,2
+154,Ministry of Justice UK,1
+155,NCS Group,1
+156,SYNERGY MARINE and OFFSHORE SAFETY SOLUTIONS LIMITED,1
+157,Philomath Infotech Pvt Ltd,11
+158,ZS,1
+159,TalentPundits,1
+160,SIEMENS TECHNOLOGY AND SERVICES PRIVATE LIMITED,1
+161,Dunamis Systems Engineering Pvt Ltd,1
+162,Equifax,1
+163,Clinisupplies,1
+164,Mindteck,3
+165,Western Alliance Bank,1
+166,Vagrms Design,1
+167,Pune International Centre,2
+168,John Deere,2
+169,Fractal,4
+170,Salesforce,3
+171,Emergys,2
+172,AvalonBay Communities,1
+173,Intelliglobe,1
+174,HCLTech,5
+175,Curai,1
+176,Bits In Glass,1
+177,Mastercard,5
+178,Drisha Labs,1
+179,Microsoft,5
+180,Doshi Group of Companies,1
+181,Volen Software Services Pvt Ltd,1
+182,CGI,1
+183,Deloitte,1
+184,Wells Fargo,2
+185,Oracle,1
+186,GitLab,1
+187,Best Buy,2
+188,Genesys,3
+189,phData hiring,1
+190,nVent,1
+191,PwC,3
+192,JPMorgan Chase and Co,1
+193,Deutsche Bank,4
+194,Progress Rail A Caterpillar Company,1
+195,Parth Properties,1
+196,SAAMA Technologies Unilever,1
+197,The Dotcom Team,1
+198,UIIN,1
+199,Target,2
+200,The Digital Core,1
+201,Bristlecone,1
+202,iTEK RFID,1
+203,Persistent Systems,3
+204,IMRB International,2
+205,Siemens Digital Industries Software,4
+206,Perfect People Search,1
+207,INTECH,1
+208,Atman Consultants,3
+209,Faiveley Transport,1
+210,Sanjay Ghodawat Institute,1
+211,Eaton Mission System Division,1
+212,Tech Prescient,1
+213,Service King Collision,1
+214,Bayer Built Woodworks,1
+215,Synopsys India,1
+216,CITEC Engineering India Pvt Ltd,1
+217,Coupang,1
+218,Rasayu Cancer Clinic India,1
+219,Interac Corp,1
+220,AXS,1
+221,Contour,1
+222,Blue Cross Blue Shield of Michigan,1
+223,Cooper and Associates LLC,1
+224,Fitness On Demand,1
+225,Thomson Reuters,2
+226,Hewlett Packard Enterprise,1
+227,PrivatelyHeld LLC,1
+228,UBS Credit Suisse Barclays TCS KPCA,1
+229,Amazon Web Services AWS,2
+230,Thoughtworks,1
+231,Andesite,1
+232,UNFI,2
+233,ThoughtSpot,1
+234,KALPATARU PROJECTS INTERNATIONAL LIMITED,1
+235,Experian Consumer Services,1
+236,Sawkar Homoeopathic Medical College Satara Maharashtra India,1
+237,Oportun,1
+238,CDW,1
+239,Hexaware Technologies,1
+240,Embedsys Consultancy Services,1
+241,Vosyn,1
+242,Kyndryl India,1
+243,Sandvik Coromant,1
+244,ChotuAI,1
+245,GSK Pharmaceuticals India,1
+246,Bajaj Auto Ltd,2
+247,Barclays UK,1
+248,Barclays,2
+249,Independent Consultant,2
+250,Union Pacific Railroad,1
+251,TSystems ICT India Pvt Ltd,2
+252,Agivant Technologies,1
+253,Imperial College London,1
+254,ICE Mortgage Technology,1
+255,PNC,1
+256,GeakMinds Inc,1
+257,Shell,4
+258,Worley,1
+259,Ameya Software,1
+260,NVIDIA,4
+261,Tata Consultancy Services TCS,1
+262,The University of British Columbia,1
+263,Manashama Mind Discipline for Professionals,1
+264,Tata Communications,1
+265,GlobalLogic India,1
+266,Coding With Kids,1
+267,Affirma,1
+268,Bharati Shipyard Ltd,1
+269,Ushahkal Abhinav speciality Hospital,1
+270,Jacobs,1
+271,JCB India Ltd,1
+272,CoreWeave,1
+273,Arcteraio,1
+274,Fisher and Paykel Appliances,1
+275,Carrier India,1
+276,Virtusa,1
+277,The Rockefeller University,1
+278,Dassault SystA mes,2
+279,Poona hosp And MJM pune,1
+280,Emerson Innovation Center,1
+281,Cargill,1
+282,dockyardcoin,1
+283,Medline Industries LP,1
+284,Grasim Industries Limited Pulp and Fibre,1
+285,Radium Executive Search,1
+286,ValueLabs,1
+287,Panini Technolabs,1
+288,Wipro Limited,1
+289,Loylty Rewardz Mngt Pvt Ltd,1
+290,Wachovia A Wells Fargo Company,1
+291,Kondana,1
+292,Pune Institute of Computer Technology,2
+293,Stratkalytics Consulting and Advisory Services,1
+294,Prometteur Solutions Pvt Ltd,1
+295,Walmart Data Ventures,1
+296,StakeWithUs,1
+297,GNR Recycling India Pvt Ltd,1
+298,Dhee AI,1
+299,Amazon,5
+300,Nice Software Solutions Pvt Ltd,1
+301,iA,1
+302,Smart Analytica,1
+303,Konverge AI,1
+304,HARMAN International,2
+305,bartakke electrofab pvt ltd,1
+306,Impetus,1
+307,Google,4
+308,IGT Solutions,1
+309,zCon Solutions Pvt Ltd,1
+310,eZest An Accion Labs Company,1
+311,Kirloskar Oil Engines Limited,1
+312,Delivery Hero,1
+313,Mahindra Home Finance,1
+314,Walmart Stores Inc Client Tata Consultancy Services Employer,1
+315,Kantar,1
+316,Volkswagen Group Technology Solutions India,1
+317,Infoblox,1
+318,IDFL India,1
+319,Walmart Global Tech India,4
+320,Sony India Software Centre,1
+321,AKU Consulting,1
+322,Inteliment,1
+323,DES Pune University,1
+324,Standard Chartered Bank,1
+325,Tech Mahindra,3
+326,Tata Consultancy Services Ltd,1
+327,TIAA,1
+328,SAP Parts Pvt Ltd,1
+329,STROTA ConsulTech,1
+330,BONDAI,1
+331,Tvaska technologies Pvt Ltd,1
+332,KPMG UK,1
+333,Petroleum Development Oman,1
+334,Alfa Laval,1
+335,Commonwealth Bank,4
+336,Healthark,1
+337,US Bank,1
+338,The Guinness Partnership,1
+339,Haleon,1
+340,Tavant,1
+341,Arctic Wolf,1
+342,Zluri,1
+343,Stepan Company,1
+344,Various Business Schools,1
+345,Maxxton India Technologies,1
+346,Neil Automation,1
+347,none,1
+348,ANB Bank,1
+349,Facebook,1
+350,Nordstrom,1
+351,bp,2
+352,Retired,2
+353,ValMatic Valve and Mfg Corp,1
+354,SpanIdea Systems,1
+355,Johnson Controls,6
+356,Vivicta,1
+357,KBP College of Engineering and Polytechnic Satara,1
+358,Philomath Trainings and Consultancy Pvt Ltd,3
+359,Bunker Holding AS,1
+360,AISSMS Institute Of Information Technology,1
+361,Mahindra and Mahindra Limited Automotive and Farm Equipment Business,1
+362,Frost and Sullivan,1
+363,Bank of America,3
+364,Agilus Work Solutions,1
+365,Blue Cross and Blue Shield of Minnesota,2
+366,Marlabs,1
+367,Barclaycard,1
+368,Reputed Recruitment and Search Firm,1
+369,Supervalu,2
+370,Progressive Insurance,2
+371,Circana,1
+372,Galaxy Weblinks Inc,1
+373,Wex Technologies Pvt Ltd,1
+374,TCG Digital,1
+375,Tiger Analytics,1
+376,Bluevine,1
+377,Indian Institute of Technology Hyderabad,1
+378,Kantar IMRB,1
+379,Wesco,1
+380,SUPERVALU,1
+381,HashiCorp,1
+382,Indian Institute of Technology Bombay,1
+383,Rohini Mulay Consultancy,1
+384,Shree Estates,1
+385,iConnect Digital Solutions Ltd,1
+386,ThePerfectVoice,1
+387,SES,1
+388,Stellantis,1
+389,ZF Group,1
+390,Accenture Strategy and Consulting,2
+391,Pranjali Properties,1
+392,McCormick and Company,1
+393,ThoughtWorks,1
+394,AVEVA,1
+395,AArete,2
+396,ACT Group,1
+397,Metyis,1
+398,nexcale,1
+399,Intuit,2
+400,Unicore Aiminds Private Limited,1
+401,Technology Insight Corporation,1
+402,Associated Colleges of the Midwest,1
+403,Siemens Healthineers,1
+404,MayiLabs,1
+405,OysterConnect,1
+406,VOLANSYS An ACL Digital Company,1
+407,SKILLS GURUKUL,1
+408,SymphonyAI,1
+409,Centiro Solutions,1
+410,Tata Elxsi,1
+411,Nottingham University Hospitals NHS Trust,1
+412,AutomationEdge,1
+413,ABB,1
+414,Intellicus Technologies,1
+415,Panzura,1
+416,Arvind Gavali College of Engineering,1
+417,Ishana Enterprises,1
+418,AV poly sangamner,1
+419,Caterpillar Inc,1
+420,Adobe,1
+421,Piaggio Vehicles Pvt Ltd,1
+422,Kipo AI,1
+423,Tata Consulting Engineers Limited,1
+424,Roblox,1
+425,NTT DATA,1
+426,BMC Software,1
+427,InfoCepts,1
+428,Sourced Group an Amdocs Company ANZ Bank,1
+429,Australian Energy Market Operator AEMO,2
+430,Armament Research and Development Establishment DRDO,1
+431,WEG,1
+432,Simmons Foods,1
+433,Global Engineering RandD and Digital Engineering Services Company,1
+434,Emerson,1
+435,Cuboid9,1
+436,SAP,1
+437,Nagarro,1
+438,Globant,2
+439,Exaze,1
+440,Sony Research India,1
+441,healthcare,1
+442,Zenius Corporation,1
+443,KSB India,1
+444,Moldtek Technologies Limited,1
+445,ADEONA HOLIDAYS LLP,1
+446,Association of Designers of India,1
+447,WNS,1
+448,Playford Consulting,1
+449,BT Sourced,1
+450,Aviso AI,1
+451,Vive Financial,1
+452,Janata Sahakari bank ltd satara,1
+453,Scope Retail Systems Inc,2
+454,Accenture in India,1
+455,Hitachi Digital Services,2
+456,KPMG India,1
+457,Mastech Digital,1
+458,Verizon,1
+459,exWalmart exSams Club,1
+460,Mindbowser Inc,1
+461,Siemens PLM Software,1
+462,CVS Health,1
+463,ICICI Bank,1
+464,nudgebee,1
+465,ProcDNA,1
+466,Nayara Energy,1
+467,Faurecia,1
+468,Staffington Consulting,1
+469,ezyhire,1
+470,Air India Limited,1
+471,ATS Global,1
+472,Centre for Industry 40 C4i4 Lab,1
+473,Indian Institute of Management Ahmedabad,1
+474,ColgatePalmolive,2
+475,Micron Technology,1
+476,Allianz Technology,1
+477,TAKRAF Group,1
+478,Inventec Australia Pty Ltd,1
+479,Inventec Systems Private Limited,1
+480,Sigma Energy and Marine,1
+481,India Trailblazing Analytics Tableau User Group,1
+482,Acceldata,1
+483,Seagate Technology,1
+484,Humana,2
+485,University of St Thomas,1
+486,Lovelytics,1
+487,NovoTree Minds Consulting Private Limited,1
+488,Rakuten,2
+489,Tata Consultancy Services Limited TCS,1
+490,TATA Consultancy Servcies,1
+491,IUCAA Pune India,1
+492,Infinite Computer Solutions,1
+493,THE HINDUSTHAN COOP BANK LTD MUMBAI,1
+494,Siemens Energy,1
+495,Origin Energy,1
+496,TechCXO,1
+497,Persistent Systems Ltd,1
+498,Innomatics Research Labs,1
+499,Uber,1
+500,Wistia,1
+501,Strategic Forays Consultancy Services Pvt Ltd,1
+502,Saatvik Solar,1
+503,Onward Technologies Limited,1
+504,TVS Credit Services Ltd,1
+505,Cascaid Health,1
+506,UKG,1
+507,Fortra,1
+508,Quest Defense,1
+509,Southern California Edison SCE,1
+510,ANAROCK,1
+511,Spark New Zealand,1
+512,Deriv,1
+513,Nitor Infotech an Ascendion Company,1
+514,Bharati Vidyapeeth University College Of Engineering Pune,1
+515,Perficient,1
+516,KPMG,1
+517,Concentrix Daksh India Pvt Ltd,1
+518,Intel Corporation,1
+519,Bharat Research in AI and NextGen BRAIN,1
+520,SkyPoint Cloud,1
+521,Medical Devices,1
+522,LanceSoft Inc,1
+523,Standard Chartered,1
+524,Deloitte Consulting,1
+525,Mahindra Group,1
+526,HCL America Inc,1
+527,Avalara,1
+528,thyssenkrupp Uhde,1
+529,Mahindra and Mahindra Limited,1
+530,Volkswagen Group Digital Solutions India,1
+531,Optimum Infosystem,1
+532,AutoIntell Services Owner,1
+533,Devoteam,1
+534,Viewpoint,1
+535,OM1 Inc,1
+536,AK Science Tutorials,1
+537,Wiley,1
+538,Kyndryl,1
+539,Dauch,1
+540,Emerson Automation Solutions,1
+541,Airbnb,1
+542,Nascent,1
+543,McKinsey and Company,1
+544,Gap Inc,1
+545,Large Energy Provider,1
+546,iSource Infosystems Pvt Ltd,1
+547,Dassault Systemes Solutions Lab,1
+548,Meviak Digital,1
+549,DataWare Analytics LLC,1
+550,Refactor Talent,1
+551,Bank of America Merrill Lynch,1
+552,Mercurius IT,1
+553,Morgan Stanley,2
+554,More Peace Art,1
+555,Oracle Financial Services Software Ltd,1
+556,Infosys Limited,1
+557,The Dot Collective,1
+558,SandP Global,1
+559,WSP in India,1
+560,Elkay Chemicals,1
+561,METRO Business Solution Center,1
+562,Qualys,1
+563,Credit Suisse,1
+564,MercedesBenz Silver Star Pune,1
+565,Nirmiteeio,1
+566,Akamai Technologies,1
+567,BHSSYEN,1
+568,AMERICAN EAGLE OUTFITTERS INC,1
+569,Costonomyai,1
+570,Lamons Basrur Uniseal,1
+571,Comsense Technologies,1
+572,Accenture Song,1
+573,PDSVISION,1
+574,Atturra,1
+575,Customized Energy Solutions,1
+576,AMPCUS Asurion,1
+577,Valency Networks,1
+578,Alexion Pharmaceuticals Inc USA,1
+579,ACMOLOGY,1
+580,Couchbase,1
+581,Meeraq,1
+582,AGDATA LP,1
+583,Bharat Forge Ltd,1

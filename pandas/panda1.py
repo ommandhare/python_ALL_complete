@@ -80,7 +80,7 @@ print("*****************HEADER = NONE ****************************")
 #
 path=r"C:\PythonWork\DataAnalysis\test1.csv"
 df1 = pd.read_csv(path,header=None)
-#df1 = pd.read_csv(path)
+#df1 = pd.read_csv(baseWordPath)
 print(df1)
 print("COLUMN NAMES BY DEFAULT (header is none): ",df1.columns)
 df1.columns = ["name","weight","age","height"]
@@ -98,7 +98,7 @@ print(df1)
 #there should not be any hard-coding in your actual program.
 # move all parameter values (paths, column names, column list... etc.) to
 # one parameter file (can call it config.py or input.py)
-# or it can be a text file or JSON file or Yaml file and name of this file and path of this file
+# or it can be a text file or JSON file or Yaml file and name of this file and baseWordPath of this file
 # can be given as commadn line argument
 path=r"C:\PythonWork\DataAnalysis\test11.csv"
 df1 = pd.read_csv(path, header=None,names=cfg.e_file_header1, usecols=[0,1,2,3])

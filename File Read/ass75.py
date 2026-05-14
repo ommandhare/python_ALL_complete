@@ -6,7 +6,7 @@ from sys import argv
 path=argv[1]
 
 # C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\data\countrydata.csv
-# use this path at cmdline argv
+# use this baseWordPath at cmdline argv
 
 
 for line in open(path):

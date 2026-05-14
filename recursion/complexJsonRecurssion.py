@@ -1,5 +1,5 @@
 import json
-#path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\recursion\keyValue.json"
+#baseWordPath=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\recursion\keyValue.json"
 #"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\recursion\listOfList.json"
 #"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\recursion\dictOfDict.json"
 path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\recursion\dictOfDictContainingLists.json"

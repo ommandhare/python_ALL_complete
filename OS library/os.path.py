@@ -24,7 +24,7 @@ path = r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\analysis_
 print(os.path.basename(path))
 
 
-# Gives root path and extension
+# Gives root baseWordPath and extension
 path = r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\analysis_project\append_to_sql.py"
 root, ext = os.path.splitext(path)
 print("Root:", root)

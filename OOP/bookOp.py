@@ -1,7 +1,7 @@
 # write a program that does following
 # 1.create a book class (separate file)
 # 2.create bookOp python file
-# 3.In bookOp python file - set path to book data
+# 3.In bookOp python file - set baseWordPath to book data
 # 4.Read book file
 # 5.For every line create an object of book class
 # 6.Print ref to the newly created object on screen

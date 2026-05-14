@@ -1,6 +1,7 @@
 import re
 import unicodedata
 import spacy
+import pandas as pd
 
 path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Word Count.csv"
 
@@ -344,3 +345,6 @@ print(baseWordLst)
 print(baseDict)
 
 
+df = pd.DataFrame(list(baseDict.items()), columns=['word', 'base_word'])
+
+df.to_csv("base_word_dict.csv")

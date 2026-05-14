@@ -150,7 +150,7 @@ print(wordDict)
 # sortedIdDict=giveId(sortedList)
 # # print(sortedIdDict)
 #
-# ls=getList(path)
+# ls=getList(baseWordPath)
 # #
 # # # REPLACING WORD TO ID
 # idReplacedList=replaceId(sortedIdDict)

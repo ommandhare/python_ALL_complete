@@ -34,7 +34,7 @@ f.close()
         
 '''
         try:
-            fsize = os.path.getsize(fullpath)
+            fsize = os.baseWordPath.getsize(fullpath)
         except OSError as e:
             continue
         if fsize > 100000:

@@ -5,7 +5,7 @@ import formatConfig as fcg
 
 
 
-# params:  path, start_row, start_col
+# params:  baseWordPath, start_row, start_col
 def data_sheet(path, data_name, startrow, startcol, filter):
     df = pd.read_csv(path)
 

@@ -1,12 +1,12 @@
 """
-Walk path given by users (os.walk) and generate report about number of files, no of directories and size of every directory
+Walk baseWordPath given by users (os.walk) and generate report about number of files, no of directories and size of every directory
 
 """
 
 import os
 
 report = {}
-root_dir = input("Enter the root directory path: ")
+root_dir = input("Enter the root directory baseWordPath: ")
 
 if not os.path.exists(root_dir):
     print("The specified directory does not exist.")

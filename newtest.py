@@ -5,7 +5,7 @@ from sqlalchemy import create_engine
 
 
 
-path= r"C:\Users\Om Mandhare\Documents\rsi.csv" #path of csv file
+path= r"C:\Users\Om Mandhare\Documents\rsi.csv" #baseWordPath of csv file
 
 data=pd.read_csv(path)
 

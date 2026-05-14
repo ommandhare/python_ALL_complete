@@ -29,7 +29,7 @@ def TROUGHS(path,dataList):
 
 
 
-# path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\data\nseSample"
+# baseWordPath=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\data\nseSample"
 closeList=[]
 for line in open(path):
     sym,dt,cls=line.strip().split(",")

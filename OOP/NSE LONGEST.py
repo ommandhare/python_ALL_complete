@@ -23,7 +23,7 @@ def dataExtrector(path):
         ObjList.append(nifty)
         print(nifty[0])
 
-    # with open(path) as fs:
+    # with open(baseWordPath) as fs:
     #     data = csv.reader(fs)
     #     next(data,None)
     #     for line in data:

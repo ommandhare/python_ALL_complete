@@ -51,10 +51,10 @@ print(last_saturday)
 
 
 
-# path=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\Date_time\count_saturday.csv"
+# baseWordPath=r"C:\Users\HP\PycharmProjects\pythonProject.py\venv\Assignments\Date_time\count_saturday.csv"
 #
 # def write_to_csv(last_saturday):
-#     with open(path, 'w', newline='') as csvfile:
+#     with open(baseWordPath, 'w', newline='') as csvfile:
 #         writer = csv.writer(csvfile)
 #         writer.writerow(['first_mondays'])
 #         for date, weekday in last_saturday:

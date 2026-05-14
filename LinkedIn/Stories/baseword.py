@@ -4,6 +4,9 @@ import spacy
 
 path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Word Count.csv"
 
+
+# nlp = spacy.load("en_core_web_sm")
+
 variant_dict = {
     "jr.": "jr",
 
@@ -217,7 +220,6 @@ abbreviation_dict =  {
     "log": "logistics"
 }
 
-
 base_word_dict = {
     "development": "develop",
     "developing": "develop",
@@ -340,3 +342,5 @@ for word in cleanWordLst:
 
 print(baseWordLst)
 print(baseDict)
+
+

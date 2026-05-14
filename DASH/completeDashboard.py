@@ -86,7 +86,7 @@ def mini_line_chart(dff):
 
 def box_style():
     return {
-        'height': '25%',
+        'Height': '25px',
         'width': '25%',
         'border': '2px solid black',
         'padding': '5px'
@@ -107,17 +107,50 @@ def drawdown_chart(dff):
         x=dff['date'],
         y=drawdown,
         fill='tozeroy',
+        fillcolor='rgba(255,0,0,0.3)',
         mode='lines',
         name='Drawdown'
     ))
 
     fig.update_layout(
         title="Drawdown",
-        height=200
+        height=400
     )
 
     return fig
 
+
+def volume_bar_chart(dff):
+
+    # Try to detect volume column safely
+    volume_col = None
+    for col in dff.columns:
+        if "volume" in col :
+            volume_col = col
+            break
+
+    if volume_col is None:
+        return go.Figure()  # fallback if no column
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Bar(
+        x=dff['date'],
+        y=dff[volume_col],
+        marker_color='rgba(0, 123, 255, 0.6)'  # soft blue
+    ))
+
+    fig.update_layout(
+        title="Volume",
+        height=200,   # 👈 NARROW HEIGHT (important)
+        margin=dict(l=10, r=10, t=25, b=10),
+        xaxis_title=None,
+        yaxis_title=None,
+        xaxis_showgrid=False,
+        yaxis_showgrid=False
+    )
+
+    return fig
 
 # DASH APP
 app = Dash(__name__)
@@ -139,21 +172,45 @@ app.layout = html.Div([
         html.Div(id='drawdown', style={'width': '30%', 'display': 'inline-block'}),
     ]),
 
-    # MAIN CHART
+
+    #MAIN CHART
     dcc.Graph(id='chart'),
+
+    #Volume Bar
+    html.Div([
+        dcc.Graph(id='volume_chart')
+    ], style={
+        'border': '2px solid black',
+        'width': '100%',
+        'height': '160px',
+        'marginTop': '15px'
+
+    }),
+
 
     # LOWER DASHBOARD (4 BOXES)
     html.Div([
 
         html.Div([dcc.Graph(id='volatility_gauge')], style=box_style()),
 
-        html.Div([dcc.Graph(id='drawdown_chart')], style=box_style()),
+        html.Div([dcc.Graph(id='drawdown_chart')], style={
+            'width': '100%',
+            'height': '400',          # 👈 NARROW HEIGHT
+            'border': '2px solid black',
+            'borderRadius': '10px',
+            'marginTop': '20px',
+            'padding': '10px'
+        }),
 
         html.Div([dcc.Graph(id='return_gauge')], style=box_style()),
     ], style={
         'display': 'flex',
-        'justifyContent': 'space-between',
-        'alignItems': 'center'})
+        'alignItems': 'stretch',
+        'alignItems': 'center',
+        'justifyContent': 'center',
+        'gap':'50px',
+        'marginTop': '20px'
+    })
 
 
 
@@ -165,6 +222,7 @@ app.layout = html.Div([
         Output('chart', 'figure'),
         Output('return', 'children'),
         Output('sharpe', 'children'),
+        Output('volume_chart', 'figure'),
         Output('volatility_gauge', 'figure'),
         Output('return_gauge', 'figure'),
         Output('drawdown_chart', 'figure')
@@ -184,15 +242,41 @@ def update_dashboard(symbol):
     # MAIN CHART
     fig = go.Figure()
 
-    fig.add_trace(go.Scatter(
-        x=dff['date'],
-        y=dff['close'],
-        mode='lines',
-        name='Price'
-    ))
+    if Cfg["CHART_TYPE"] == "candlestick":
+        fig.add_trace(go.Candlestick(
+            x=dff['date'],
+            open=dff['open'],
+            high=dff['high'],
+            low=dff['low'],
+            close=dff['close'],
+            name='Price'
+        ))
+
+        # Moving Averages
+        for ma in Cfg["INDICATORS"]["moving_average"]:
+            if ma in dff.columns:
+                fig.add_trace(go.Scatter(
+                    x=dff['date'],
+                    y=dff[ma],
+                    mode='lines',
+                    name=ma.upper(),
+                    line=dict(width=2)
+                ))
 
     fig.update_layout(
-        height=Cfg["APP"]["height"]
+        title={
+            'text': f"{symbol}",
+            'x': 0.5,
+            'xanchor': 'center',
+            'font': {
+            'size': 22,
+            'color': '#F02A02',
+            'family': 'Segoe UI',
+            'weight': 'bold'}
+        },
+        height=Cfg["APP"]["height"],
+        xaxis_rangeslider_visible=Cfg["RANGE_SLIDER"]
+
     )
 
 
@@ -200,6 +284,7 @@ def update_dashboard(symbol):
         fig,
         f"Return: {total_return}%",
         f"Sharpe: {sharpe}",
+        volume_bar_chart(dff),
         create_gauge(volatility, "Volatility", max_val=100),
         create_gauge(total_return, "Returns", max_val=300),
         drawdown_chart(dff)

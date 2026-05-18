@@ -13,19 +13,22 @@ variant_dict = {
 
     # Manager
     "mngr": "mgr",
+    "mgt" : "management",
     "mgmt": "management",
     "mgmts": "management",
 
     # Engineering
-    "engg": "eng",
-    "engr": "eng",
-    "engr.": "eng",
+    "engg": "engg",
+    "engr": "engg",
+    "engr.": "engg",
     "engrs": "engineers",
 
     # Developer
     "devloper": "developer",
     "devlpr": "developer",
-    "devs": "developers",
+    "devs": "developer",
+    "exp": "Experience",
+    "Gra": "Graduate",
 
     # Analyst
     "analysts": "analyst",
@@ -42,6 +45,7 @@ variant_dict = {
 
     # HR
     "hrs": "hr",
+    "yrs":"years",
 
     # Finance
     "fins": "finance",
@@ -54,7 +58,8 @@ variant_dict = {
     "architects": "architect",
     "designers": "designer",
     "scientists": "scientist",
-    "specialists": "specialist"
+    "specialists": "specialist",
+    "sottware": "software"
 }
 
 stop_words = {
@@ -78,24 +83,7 @@ stop_words = {
     "within",
     "across",
     "over",
-    "under",
-    "department",
-    "dept",
-    "division",
-    "team",
-    "unit",
-    "services",
-    "solutions",
-    "systems",
-    "operations",
-    "global",
-    "regional",
-    "corporate",
-    "enterprise",
-    "international",
-    "india",
-    "usa",
-    "uk"
+    "under"
 }
 
 abbreviation_dict =  {
@@ -116,6 +104,7 @@ abbreviation_dict =  {
     "chro": "chief human resources officer",
 
 
+
     # -----------------------------------------------------
     # SENIORITY
     # -----------------------------------------------------
@@ -126,6 +115,8 @@ abbreviation_dict =  {
     "asst": "assistant",
     "lead": "lead",
     "prin": "principal",
+    "uk": "united kingdom",
+
 
 
     # -----------------------------------------------------
@@ -138,7 +129,16 @@ abbreviation_dict =  {
     "avp": "assistant vice president",
     "svp": "senior vice president",
     "evp": "executive vice president",
+    "rvp": "regional vice president",
     "gm": "general manager",
+    "pmo":"project management office",
+    "agm": "assistant general manager",
+    "dgm":"deputy general manager",
+    "md": "managing director",
+    "randd":"research and Development",
+    "iiot":"industrial internet of things",
+    "sez":"special economic zone",
+    "csr":"corpoarte social responsibility",
 
 
     # -----------------------------------------------------
@@ -172,6 +172,27 @@ abbreviation_dict =  {
     "devops": "development operations",
     "secops": "security operations",
     "it": "information technology",
+    "dy":"deputy",
+    "sre":"site reliability engg",
+    "pvt":"private",
+    "ltd":"limited",
+    "e4r":"engg for research",
+    "irc":"informartion and research center",
+    "grc":"governance risk compliance",
+    "gcp":"google cloud platform",
+    "mom":"manufacturing operation management",
+    "apm":"application performance monitoring",
+    "cae":"computer aided design",
+    "acm":"active category management",
+    "eam":"enterprise asset management",
+    "mis":"management information system",
+    "tug":"tableu user group",
+    "exb":"engineering excellence bureau",
+    "gbs":"global business services",
+    "npd":"new product development",
+    "asc":"Associate",
+    "ind":"india",
+    "gra":"graduate",
 
 
     # -----------------------------------------------------
@@ -218,48 +239,38 @@ abbreviation_dict =  {
     "cs": "customer support",
     "cx": "customer experience",
     "scm": "supply chain management",
-    "log": "logistics"
+    "log": "logistics",
+    "iot": "Internet of Things",
+    "cw": "Contract Worker"
 }
 
 base_word_dict = {
-    "development": "develop",
-    "developing": "develop",
 
     # Analysis
-    "analytics": "analysis",
-    "analyst": "analysis",
-    "analysts": "analysis",
+    "analytics": "analytics",
+    "analyst": "analyst",
+    "analysts": "analyst",
 
     # Management
-    "management": "manage",
-    "manager": "manage",
-    "managers": "manage",
-    "managing": "manage",
+    "management": "management",
+    "manager": "manager",
+    "managers": "manager",
+    "managing": "manager",
 
     # Consulting
-    "consultant": "consult",
-    "consulting": "consult",
+    "consulting": "consultant",
 
     # Design
-    "designer": "design",
     "designing": "design",
     "designers": "design",
 
-    # Architecture
-    "architect": "architecture",
-    "architects": "architecture",
-
-    # Operations
-    "operations": "operation",
     "operational": "operation",
 
     # Administration
     "administrator": "admin",
     "administration": "admin",
 
-    # Science
-    "scientist": "science",
-    "scientists": "science",
+    "scientists": "scientist",
 
     # Finance
     "financial": "finance",
@@ -270,8 +281,7 @@ base_word_dict = {
     "marketer": "market",
 
     # Recruitment
-    "recruitment": "recruit",
-    "recruiter": "recruit"
+    "recruitment": "recruiter",
 }
 
 

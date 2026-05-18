@@ -45,7 +45,21 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\LinkedIn\Stories\Updated Connection.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\LinkedIn\Stories\Word Count.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\LinkedIn\Stories\base_word_dict.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

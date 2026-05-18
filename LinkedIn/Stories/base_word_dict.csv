@@ -3,7 +3,7 @@
 1,independent,independent
 2,od,od
 3,hr,human resources
-4,consultant,consult
+4,consultant,consultant
 5,group,group
 6,facilitator,facilitator
 7,flow,flow
@@ -11,13 +11,13 @@
 9,host,host
 10,lead,lead
 11,data,data
-12,scientist,science
+12,scientist,scientist
 13,professor,professor
 14,it,information technology
 15,recruiter,recruitment
-16,recruitment,recruit
-17,manager,manage
-18,iot,iot
+16,recruitment,recruiter
+17,manager,manager
+18,iot,Internet of Things
 19,de,data engineer
 20,head,head
 21,tcs,tcs
@@ -26,7 +26,7 @@
 24,director,director
 25,of,of
 26,product,product
-27,management,manage
+27,management,management
 28,vice,vice
 29,president,president
 30,sr,senior
@@ -38,14 +38,14 @@
 36,at,at
 37,mundra,mundra
 38,port,port
-39,sez,sez
+39,sez,special economic zone
 40,vp,vice president
 41,sales,sales
 42,associate,associate
 43,partner,partner
 44,global,global
 45,solution,solution
-46,architect,architecture
+46,architect,architect
 47,bi,business intelligence
 48,etl,extract transform load
 49,cofounder,cofounder
@@ -57,7 +57,7 @@
 55,technology,technology
 56,avp,assistant vice president
 57,industrial,industrial
-58,operations,operation
+58,operations,operations
 59,manufacturing,manufacturing
 60,cmo,chief marketing officer
 61,ai,artificial intelligence
@@ -96,7 +96,7 @@
 94,professional,professional
 95,tlis,tlis
 96,chairman,chairman
-97,managing,manage
+97,managing,manager
 98,researcher,researcher
 99,staff,staff
 100,executive,executive
@@ -112,7 +112,7 @@
 110,deals,deals
 111,commercial,commercial
 112,project,project
-113,cw,cw
+113,cw,Contract Worker
 114,self,self
 115,employed,employed
 116,cognizant,cognizant
@@ -124,9 +124,9 @@
 122,zonal,zonal
 123,planner,planner
 124,buyer,buyer
-125,analyst,analysis
+125,analyst,analyst
 126,projects,projects
-127,randd,randd
+127,randd,research and Development
 128,controls,controls
 129,optimization,optimization
 130,electrical,electrical
@@ -155,11 +155,11 @@
 153,intelligence,intelligence
 154,intelligent,intelligent
 155,managed,managed
-156,sottware,sottware
+156,sottware,software
 157,analysis,analysis
 158,applied,applied
 159,thermal,thermal
-160,development,develop
+160,development,development
 161,resident,resident
 162,way,way
 163,finder,finder
@@ -173,17 +173,17 @@
 171,unit,unit
 172,special,special
 173,initiatives,initiatives
-174,analytics,analysis
+174,analytics,analytics
 175,insights,insights
 176,embedded,embedded
 177,harware,harware
 178,design,design
-179,md,md
+179,md,managing director
 180,general,general
 181,relation,relation
 182,online,online
 183,reputation,reputation
-184,agm,agm
+184,agm,assistant general manager
 185,supply,supply
 186,chain,chain
 187,apac,apac
@@ -204,11 +204,11 @@
 202,cfo,chief financial officer
 203,krios,krios
 204,info,info
-205,pvt,pvt
-206,ltd,ltd
+205,pvt,private
+206,ltd,limited
 207,training,training
 208,mechanical,mechanical
-209,engg,eng
+209,engg,engg
 210,deptt,deptt
 211,cardiac,cardiac
 212,respiratory,respiratory
@@ -240,9 +240,9 @@
 238,semiconductor,semiconductor
 239,regional,regional
 240,founding,founding
-241,designer,design
+241,designer,designer
 242,products,products
-243,sre,sre
+243,sre,site reliability engg
 244,pune,pune
 245,machine,machine
 246,platform,platform
@@ -277,7 +277,7 @@
 275,support,support
 276,progam,progam
 277,agile,agile
-278,pmo,pmo
+278,pmo,project management office
 279,doctor,doctor
 280,asset,asset
 281,ibm,ibm
@@ -302,11 +302,11 @@
 300,research,research
 301,era,era
 302,backend,backend
-303,dy,dy
+303,dy,deputy
 304,esgsustainability,esgsustainability
 305,reader,reader
 306,branch,branch
-307,irc,irc
+307,irc,informartion and research center
 308,information,information
 309,client,client
 310,compliance,compliance
@@ -327,7 +327,7 @@
 325,heart,heart
 326,division,division
 327,europe,europe
-328,uk,uk
+328,uk,united kingdom
 329,life,life
 330,sciences,sciences
 331,udap,udap
@@ -340,7 +340,7 @@
 338,standup,standup
 339,comic,comic
 340,improv,improv
-341,grc,grc
+341,grc,governance risk compliance
 342,connected,connected
 343,laboratory,laboratory
 344,safety,safety
@@ -361,7 +361,7 @@
 359,wipro,wipro
 360,student,student
 361,counselor,counselor
-362,gcp,gcp
+362,gcp,google cloud platform
 363,blockchain,blockchain
 364,essential,essential
 365,education,education
@@ -419,16 +419,16 @@
 417,expert,expert
 418,visiting,visiting
 419,faculty,faculty
-420,mom,mom
+420,mom,manufacturing operation management
 421,retired,retired
 422,commerce,commerce
-423,apm,apm
+423,apm,application performance monitoring
 424,integrity,integrity
 425,pricing,pricing
 426,center,center
 427,energy,energy
 428,integration,integration
-429,rvp,rvp
+429,rvp,regional vice president
 430,field,field
 431,maintenance,maintenance
 432,asso,asso
@@ -462,7 +462,7 @@
 460,propriter,propriter
 461,political,political
 462,editor,editor
-463,cae,cae
+463,cae,computer aided design
 464,marksandspencer,marksandspencer
 465,eandpdevelopment,eandpdevelopment
 466,cso,chief strategy officer
@@ -477,7 +477,7 @@
 475,warehousing,warehousing
 476,commissioning,commissioning
 477,lecturer,lecturer
-478,acm,acm
+478,acm,active category management
 479,vespa,vespa
 480,engine,engine
 481,vehicle,vehicle
@@ -501,7 +501,7 @@
 499,value,value
 500,discovery,discovery
 501,a,a
-502,eam,eam
+502,eam,enterprise asset management
 503,power,power
 504,developermis,developermis
 505,technologyedml,technologyedml
@@ -516,7 +516,7 @@
 514,inventec,inventec
 515,private,private
 516,region,region
-517,tug,tug
+517,tug,tableu user group
 518,cognitive,cognitive
 519,adoption,adoption
 520,emeritus,emeritus
@@ -535,7 +535,7 @@
 533,trainings,trainings
 534,qdss,qdss
 535,formerly,formerly
-536,exb,exb
+536,exb,engineering excellence bureau
 537,cs,customer support
 538,event,event
 539,datascience,datascience
@@ -547,24 +547,24 @@
 545,australia,australia
 546,brunei,brunei
 547,my,my
-548,gbs,gbs
-549,npd,npd
+548,gbs,global business services
+549,npd,new product development
 550,purchase,purchase
-551,asc,asc
-552,dgm,dgm
+551,asc,Associate
+552,dgm,deputy general manager
 553,piping,piping
-554,csr,csr
+554,csr,corpoarte social responsibility
 555,modeling,modeling
 556,control,control
 557,instrument,instrument
-558,iiot,iiot
+558,iiot,industrial internet of things
 559,evangelist,evangelist
 560,technofunctional,technofunctional
 561,biology,biology
 562,educator,educator
 563,icse,icse
-564,ind,ind
-565,gra,gra
+564,ind,india
+565,gra,graduate
 566,infra,infra
 567,spectrum,spectrum
 568,mgmt,management
@@ -607,9 +607,9 @@
 605,africa,africa
 606,bu,bu
 607,with,with
-608,yrs,yrs
-609,exp,exp
-610,mgt,mgt
+608,yrs,years
+609,exp,Experience
+610,mgt,management
 611,telecom,telecom
 612,domains,domains
 613,packaged,packaged

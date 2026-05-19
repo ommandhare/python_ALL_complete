@@ -1,12 +1,9 @@
 import re
 import unicodedata
-import spacy
 import pandas as pd
 
 path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Word Count.csv"
 
-
-# nlp = spacy.load("en_core_web_sm")
 
 variant_dict = {
     "jr.": "jr",
@@ -42,6 +39,7 @@ variant_dict = {
     # Consultant
     "consulting": "consultant",
     "consults": "consultant",
+    "consltancy": "consultancy",
 
     # HR
     "hrs": "hr",

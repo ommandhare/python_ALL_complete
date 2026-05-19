@@ -73,6 +73,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\LinkedIn\Stories\output.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\LinkedIn\Word Count.csv">
           <value>
             <Attribute>

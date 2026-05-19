@@ -152,7 +152,7 @@ seniorityList = []
 
 newRows = []
 
-for _, row in df.iterrows():
+for i, row in df.iterrows():
 
     position = str(row['Position'])
 
@@ -171,6 +171,12 @@ for _, row in df.iterrows():
 
 
 newDf = pd.DataFrame(newRows)
+
+seniorityCol = newDf.pop('Seniority')
+
+baseIndex = newDf.columns.get_loc('Base_Role')
+
+newDf.insert(baseIndex + 1, 'Seniority', seniorityCol)
 
 print(newDf)
 

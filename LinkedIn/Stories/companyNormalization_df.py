@@ -1,8 +1,16 @@
 import csv
 import re
 import unicodedata
+import pandas as pd
 
-path= r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Stories\connections.csv"
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+
+
+path= r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Process\leveled.csv"
+
+df=pd.read_csv(path)
+
 
 suffixes = [
     'pvt',
@@ -121,7 +129,6 @@ def clean_domain(company):
     return company
 
 
-
 def remove_suffix(company):
 
     words = company.split()
@@ -134,6 +141,17 @@ def remove_suffix(company):
 
     return " ".join(clean_words)
 
+def normalize_company(company):
+    company = company.lower()
+    company = clean_domain(company)
+    company = remove_suffix(company)
+    company=  clean_text(company)
+    if company in abbrDict:
+        company=abbrDict[company]
+    return company
+
+
+
 abbrDict = {
     "tcs": "tata consultancy services",
     "ibm": "international business machines",
@@ -143,28 +161,23 @@ abbrDict = {
 
 cnt=0
 coList=[]
-with open(path, newline='', encoding='utf-8') as file:
-    reader = csv.reader(file)
+newRows = []
+for i,row in df.iterrows():
+    # print(i,row)
+    Company = str(row['Company'])
+    # print(f"before_{Company}")
+    updated_company = normalize_company(Company)
+    # print(f"after_{updated_company}")
+    newrow = row.copy()
+    newrow['Updated_Company'] = updated_company
+    newRows.append(newrow)
 
-    for line in reader:
-        if cnt == 0:
-            cnt += 1
-            continue
+newDf = pd.DataFrame(newRows)
 
-        First_Name, Last_Name, URL, Email_Address, Company, Position, Connected_On = line
-        coList.append(Company)
+updated_company_Col = newDf.pop('Updated_Company')
 
+companyIndex = newDf.columns.get_loc('Company')
 
-print(coList)
+newDf.insert(companyIndex + 1, 'Updated_Company', updated_company_Col)
 
-
-for company in coList:
-    company=company.lower()
-    company = clean_domain(company)
-    company = remove_suffix(company)
-    company=clean_text(company)
-    if company in abbrDict:
-        company=abbrDict[company]
-
-    # if company in c
-    print(company)
+# print(newDf)

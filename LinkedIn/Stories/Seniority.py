@@ -5,7 +5,7 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
 path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Stories\Updated Connection.csv"
-cnt=0
+# cnt=0
 
 levelDict = {
 
@@ -135,18 +135,6 @@ def extract_levels(position):
 
 
 df=pd.read_csv(path)
-# with open(path, newline='', encoding='utf-8') as file:
-#     reader = csv.reader(file)
-#     levellist=[]
-#     for line in reader:
-#         if cnt == 0:
-#             cnt += 1
-#             continue
-#
-#         First_Name,Last_Name,URL,Email_Address,Company,Position, base_role ,Connected_On = line
-#         print(Position)
-#         levellist=extract_levels(Position)
-#         print(levellist)
 
 seniorityList = []
 

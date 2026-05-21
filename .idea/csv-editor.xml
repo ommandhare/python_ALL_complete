@@ -45,14 +45,14 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\LinkedIn\Process\Updated Connection.csv">
+        <entry key="\LinkedIn\Process\Final_flat_table.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="\LinkedIn\Process\connections.csv">
+        <entry key="\LinkedIn\Process\Updated Connection.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -116,13 +116,6 @@
           </value>
         </entry>
         <entry key="\LinkedIn\base_word.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\LinkedIn\connections.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

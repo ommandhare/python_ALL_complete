@@ -11,7 +11,7 @@ pd.set_option('display.max_columns', None)
 
 # df=pd.read_csv(path)
 
-def _normalize_company(df):
+def normalize_company(df):
 
     suffixes = [
         'pvt',
@@ -181,6 +181,6 @@ def _normalize_company(df):
 
     newDf.insert(companyIndex + 1, 'Updated_Company', updated_company_Col)
 
-    newDf.to_csv("Company_Noralized.csv")
+    # newDf.to_csv("Company_Noralized.csv")
 
     return newDf

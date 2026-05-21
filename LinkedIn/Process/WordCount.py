@@ -6,7 +6,7 @@ import unicodedata
 
 
 def wordCount(path):
-    # path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\connections.csv"
+    # path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Mandar_kale_connection.csv"
     posLst=[]
     comLst=[]
     wordLst=[]

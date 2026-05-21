@@ -2,7 +2,7 @@ import pandas as pd
 import re
 
 
-# df = pd.read_csv(r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Stories\connections.csv")
+# df = pd.read_csv(r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Stories\Mandar_kale_connection.csv")
 #
 # base_df = pd.read_csv(
 #     r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Stories\base_word_dict.csv"
@@ -66,5 +66,5 @@ def replace_basewords(df,base_df):
 
 
     # df.to_csv("Updated Connection.csv")
-    print("Update based word created at csv")
+    # print("Update based word created at csv")
     return df

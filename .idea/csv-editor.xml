@@ -199,6 +199,34 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Radar_Codes\cic_comb\Word_Combination.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Radar_Codes\cic_comb\Word_Count.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Radar_Codes\cic_comb\word_Combination.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Radar_Codes\cic_comb\word_Combination_1.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Radar_Codes\composite comb replaced.csv">
           <value>
             <Attribute>

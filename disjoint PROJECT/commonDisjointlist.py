@@ -10,7 +10,7 @@ newList=[]
 #         j=int(j)
 #         print(nDict[j])
 #         commonList=[]
-#         cnt=0
+#         freq=0
 #         for item in nDict[j]:
 #            if item in itemList:
 #                 commonList.append(item)

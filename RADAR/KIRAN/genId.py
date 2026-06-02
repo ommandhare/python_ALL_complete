@@ -21,7 +21,7 @@ for wd,cnt in wordDec.items():
     wordCntList.append((wd,cnt))
 wordCntList=sorted(wordCntList,key=lambda obj:obj[1],reverse=True)
 
-hdr = 'word,id,cnt\n'
+hdr = 'word,id,freq\n'
 file = open(r'wordId.csv','w')
 file.write(hdr)
 id = 1

@@ -15,7 +15,7 @@ def addToDict(v,dct):
         dct[v] = 1
 for line in open(path):
     wd,cnt = line.strip().split("~")
-    #print("WORD: ",wd," CNT: ",cnt)
+    #print("WORD: ",wd," CNT: ",freq)
     s = len(wd)
     if(s>25):
         print("#$#$#$#$#$###$##")

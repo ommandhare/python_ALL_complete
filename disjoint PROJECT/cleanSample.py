@@ -29,7 +29,7 @@ with open(path, 'r') as file:
     next(file)
     for line in file:
         # print(line)
-        # if cnt == 100:
+        # if freq == 100:
         #     break
         # else:
             desc = line.strip().split(",", 2)

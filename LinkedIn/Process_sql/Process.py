@@ -11,7 +11,7 @@ import Seniority as sn
 import companyNormalization as cn
 
 
-folderPath = r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Process\data"
+folderPath = r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Process_sql\data"
 
 # Final Combined DF
 masterDf = pd.DataFrame(columns=["First Name","Last Name","URL","Email Address","Company","Updated Company","Position","Base Role","Seniority","Connected On","Owner"])
@@ -50,7 +50,7 @@ for file in os.listdir(folderPath):
 
 
         #
-        # Path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Process\data\Mandar_kale_connection.csv"
+        # Path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Process_sql\data\Mandar_kale_connection.csv"
         # df_Path=pd.read_csv(path)
         #
         #
@@ -67,7 +67,7 @@ for file in os.listdir(folderPath):
         print("Levels Extracted")
 
         updated_df=cn.normalize_company(updated_df)
-        print("Company Norma")
+        print("Company Normalized")
 
         updated_df["Owner"]=Name
         #

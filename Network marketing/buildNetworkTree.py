@@ -95,8 +95,8 @@ m = 1992
 findLeafNodes(1992,memberDict,childDict,0)
 
 c = 1298
-cnt = countNodes(1992,childDict)
-print("NODES UNDER C: ",c," are: ",cnt)
+freq = countNodes(1992,childDict)
+print("NODES UNDER C: ",c," are: ",freq)
 
 ## write a recursion that acceptes memberId, memberDict, level and  maxLvl
 ## and get member hierarchy till maxLevel

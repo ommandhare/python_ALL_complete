@@ -36,7 +36,7 @@ for line in open(path):
         tempWs = wordSet(wd,cnt,0)
         wList.append(tempWs)
     #print("WORD: ",wd)
-    #print("CNT: ",cnt)
+    #print("CNT: ",freq)
     rng = getCntRange(cnt)
     addToDict(rng,cntRangeDict)
 

@@ -50,10 +50,10 @@ for line in open(path1):
 
 # print("inner join")
 # tranList=[]
-# cnt=0
+# freq=0
 # for line in open(path1):
-#     if cnt==0:
-#         cnt += 1
+#     if freq==0:
+#         freq += 1
 #         continue
 #     tran_id, product_id, qty, amt, tran_dt=line.strip().split(",")
 #     # print(productDict[product_id][0])

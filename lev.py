@@ -32,7 +32,7 @@ for i in range(reps):
 
 
 
-# print(cnt)
+# print(freq)
 
 print("diffrence between two is : ", result)
 

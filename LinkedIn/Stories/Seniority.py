@@ -5,7 +5,7 @@ pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
 
 path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Stories\Updated Connection.csv"
-# cnt=0
+# freq=0
 
 levelDict = {
 

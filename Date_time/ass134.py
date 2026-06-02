@@ -38,7 +38,7 @@ while currentDate <= endDate:
 
 
 
-# print(cnt)
+# print(freq)
 print(mondays)
 
 

@@ -26,7 +26,7 @@ THEMES = {
     }
 }
 
-# ======================== CUSTOM CSS ========================
+# ======================== CUSTOM CSS (MINIMAL) ========================
 CUSTOM_CSS = '''
 <!DOCTYPE html>
 <html>
@@ -35,7 +35,7 @@ CUSTOM_CSS = '''
         <title>LinkedIn Connections Dashboard</title>
         {%favicon%}
         {%css%}
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
         <style>
             * {
                 margin: 0;
@@ -43,229 +43,109 @@ CUSTOM_CSS = '''
                 box-sizing: border-box;
             }
             
-            html, body {
-                width: 100%;
-                height: 100%;
-                overflow-x: hidden;
-            }
-            
             body {
-                font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                font-family: 'Inter', -apple-system, sans-serif;
                 background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
                 min-height: 100vh;
-                padding: 0;
-                margin: 0;
                 transition: background 0.3s ease;
             }
             
             body.dark-mode {
                 background: linear-gradient(135deg, #0f1419 0%, #1a1f2e 100%);
             }
-            
-            #react-entry-point {
-                width: 100%;
-                min-height: 100vh;
-            }
-            
-            /* Scrollbar Styling */
-            ::-webkit-scrollbar {
-                width: 8px;
-                height: 8px;
-            }
-            
-            ::-webkit-scrollbar-track {
-                background: rgba(0, 0, 0, 0.05);
-            }
-            
-            ::-webkit-scrollbar-thumb {
-                background: rgba(0, 0, 0, 0.2);
-                border-radius: 4px;
-            }
-            
-            ::-webkit-scrollbar-thumb:hover {
-                background: rgba(0, 0, 0, 0.3);
-            }
         </style>
     </head>
     <body>
         {%app_entry%}
-        <footer>
-            {%config%}
-            {%scripts%}
-            {%renderer%}
-        </footer>
+        <footer>{%config%}{%scripts%}{%renderer%}</footer>
     </body>
 </html>
 '''
 
-# ======================== COMPONENT STYLES ========================
+# ======================== COMPONENT STYLES (MINIMAL) ========================
 def get_header_style():
     return {
         'display': 'flex',
         'alignItems': 'center',
         'justifyContent': 'space-between',
-        'padding': '25px 40px',
+        'padding': '20px 40px',
         'background': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        'boxShadow': '0 8px 32px rgba(0,0,0,0.15)',
-        'marginBottom': '0px',
+        'boxShadow': '0 2px 8px rgba(0,0,0,0.1)',
     }
 
 def get_title_style():
-    return {
-        'fontSize': '28px',
-        'fontWeight': '700',
-        'color': '#ffffff',
-        'margin': '0',
-        'letterSpacing': '-0.5px',
-    }
+    return {'fontSize': '24px', 'fontWeight': '600', 'color': '#ffffff', 'margin': '0'}
 
 def get_subtitle_style():
-    return {
-        'fontSize': '13px',
-        'color': 'rgba(255,255,255,0.8)',
-        'margin': '2px 0 0 0',
-        'fontWeight': '400',
-    }
+    return {'fontSize': '12px', 'color': 'rgba(255,255,255,0.8)', 'margin': '2px 0 0 0'}
 
 def get_theme_toggle_style():
     return {
-        'width': '45px',
-        'height': '45px',
+        'width': '40px',
+        'height': '40px',
         'borderRadius': '50%',
-        'border': '2px solid rgba(255,255,255,0.3)',
-        'backgroundColor': 'rgba(255,255,255,0.1)',
+        'border': 'none',
+        'backgroundColor': 'rgba(255,255,255,0.15)',
         'color': '#ffffff',
-        'fontSize': '22px',
+        'fontSize': '20px',
         'cursor': 'pointer',
         'transition': 'all 0.3s ease',
-        'display': 'flex',
-        'alignItems': 'center',
-        'justifyContent': 'center',
     }
 
 def get_content_area_style():
-    return {
-        'minHeight': 'calc(100vh - 120px)',
-        'transition': 'background 0.3s ease',
-    }
+    return {'minHeight': 'calc(100vh - 100px)', 'transition': 'background 0.3s ease'}
 
 def get_wrapper_style():
-    return {
-        'maxWidth': '1400px',
-        'margin': '0 auto',
-        'padding': '30px 40px 40px 40px',
-    }
+    return {'maxWidth': '1600px', 'margin': '0 auto', 'padding': '25px 40px 40px'}
 
 def get_label_style():
-    return {
-        'fontSize': '13px',
-        'fontWeight': '600',
-        'marginBottom': '10px',
-        'display': 'block',
-        'textTransform': 'uppercase',
-        'letterSpacing': '0.5px',
-    }
+    return {'fontSize': '12px', 'fontWeight': '600', 'marginBottom': '8px', 'display': 'block', 'textTransform': 'uppercase', 'letterSpacing': '0.3px'}
 
 def get_filter_card_style(theme_config):
     return {
-        'padding': '20px',
-        'borderRadius': '12px',
+        'padding': '15px',
+        'borderRadius': '8px',
         'backgroundColor': theme_config['bg_secondary'],
-        'marginBottom': '30px',
+        'marginBottom': '25px',
         'boxShadow': theme_config['card_shadow'],
         'transition': 'all 0.3s ease',
     }
 
 def get_kpi_card_style(theme_config, is_last=False):
-    style = {
-        'flex': '1',
-        'minWidth': '280px',
-        'borderRadius': '12px',
-        'overflow': 'hidden',
-        'backgroundColor': theme_config['bg_secondary'],
-        'boxShadow': theme_config['card_shadow'],
-        'transition': 'all 0.3s ease',
-    }
+    style = {'flex': '1', 'minWidth': '200px', 'borderRadius': '8px', 'overflow': 'hidden', 'backgroundColor': theme_config['bg_secondary'], 'boxShadow': theme_config['card_shadow'], 'transition': 'all 0.3s ease'}
     if not is_last:
-        style['marginRight'] = '20px'
+        style['marginRight'] = '15px'
     return style
 
 def get_chart_card_style(theme_config, is_last=False):
-    style = {
-        'flex': '1',
-        'minWidth': '450px',
-        'borderRadius': '12px',
-        'overflow': 'hidden',
-        'backgroundColor': theme_config['bg_secondary'],
-        'boxShadow': theme_config['card_shadow'],
-        'transition': 'all 0.3s ease',
-    }
+    style = {'flex': '1', 'minWidth': '400px', 'borderRadius': '8px', 'overflow': 'hidden', 'backgroundColor': theme_config['bg_secondary'], 'boxShadow': theme_config['card_shadow'], 'transition': 'all 0.3s ease'}
     if not is_last:
-        style['marginRight'] = '20px'
+        style['marginRight'] = '15px'
     return style
 
 def get_kpi_row_style():
-    return {
-        'display': 'flex',
-        'flexWrap': 'wrap',
-        'marginBottom': '30px',
-        'gap': '20px',
-    }
+    return {'display': 'flex', 'flexWrap': 'wrap', 'marginBottom': '25px', 'gap': '15px'}
 
 def get_chart_row_style():
-    return {
-        'display': 'flex',
-        'flexWrap': 'wrap',
-        'gap': '20px',
-        'marginBottom': '30px',
-    }
+    return {'display': 'flex', 'flexWrap': 'wrap', 'gap': '15px', 'marginBottom': '25px'}
 
 def get_summary_section_style():
-    return {
-        'marginBottom': '30px',
-    }
+    return {'marginBottom': '25px'}
 
 def get_summary_card_style(theme_config):
-    return {
-        'padding': '25px',
-        'borderRadius': '12px',
-        'backgroundColor': theme_config['bg_secondary'],
-        'boxShadow': theme_config['card_shadow'],
-        'maxWidth': '400px',
-        'transition': 'all 0.3s ease',
-    }
+    return {'padding': '20px', 'borderRadius': '8px', 'backgroundColor': theme_config['bg_secondary'], 'boxShadow': theme_config['card_shadow'], 'maxWidth': '350px', 'transition': 'all 0.3s ease'}
 
 def get_summary_title_style():
-    return {
-        'fontSize': '16px',
-        'fontWeight': '600',
-        'marginBottom': '20px',
-    }
+    return {'fontSize': '14px', 'fontWeight': '600', 'marginBottom': '15px'}
 
 def get_summary_text_style():
-    return {
-        'marginBottom': '12px',
-        'fontSize': '14px',
-    }
+    return {'marginBottom': '10px', 'fontSize': '13px'}
 
 def get_last_summary_text_style():
-    return {
-        'fontSize': '14px',
-    }
+    return {'fontSize': '13px'}
 
 def get_app_container_style():
-    return {
-        'display': 'flex',
-        'flexDirection': 'column',
-        'minHeight': '100vh',
-        'transition': 'all 0.3s ease',
-    }
+    return {'display': 'flex', 'flexDirection': 'column', 'minHeight': '100vh', 'transition': 'all 0.3s ease'}
 
 def get_main_container_style(theme_config):
-    return {
-        'display': 'flex',
-        'flexDirection': 'column',
-        'minHeight': '100vh',
-        'backgroundColor': theme_config['bg_primary'],
-        'transition': 'all 0.3s ease',
-    }
+    return {'display': 'flex', 'flexDirection': 'column', 'minHeight': '100vh', 'backgroundColor': theme_config['bg_primary'], 'transition': 'all 0.3s ease'}

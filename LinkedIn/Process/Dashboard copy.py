@@ -93,6 +93,40 @@ ORDER BY Count DESC
 LIMIT 10
 """
 
+# Query to get industry distribution
+QUERY_INDUSTRY_DISTRIBUTION = """
+SELECT industry, COUNT(*) as Count
+FROM linkedin_comapanies_extented
+WHERE owner = %s
+GROUP BY industry
+ORDER BY Count DESC
+LIMIT 15
+"""
+
+QUERY_INDUSTRY_DISTRIBUTION_ALL = """
+SELECT industry, COUNT(*) as Count
+FROM linkedin_comapanies_extented
+GROUP BY industry
+ORDER BY Count DESC
+LIMIT 15
+"""
+
+# Query to get country distribution
+QUERY_COUNTRY_DISTRIBUTION = """
+SELECT country, COUNT(*) as Count
+FROM linkedin_comapanies_extented
+WHERE owner = %s
+GROUP BY country
+ORDER BY Count DESC
+"""
+
+QUERY_COUNTRY_DISTRIBUTION_ALL = """
+SELECT country, COUNT(*) as Count
+FROM linkedin_comapanies_extented
+GROUP BY country
+ORDER BY Count DESC
+"""
+
 # ======================== DATABASE CONNECTION FUNCTION ========================
 def get_db_connection():
     """Create and return database connection"""
@@ -124,6 +158,37 @@ def fetch_query(query, params=None):
     except Exception as e:
         print(f"Database Error: {str(e)}")
         return pd.DataFrame()
+
+# ======================== COUNTRY NAME TO ISO-3 CODE MAPPING ========================
+COUNTRY_MAPPING = {
+    'india': 'IND',
+    'united kingdom': 'GBR',
+    'united states': 'USA',
+    'germany': 'DEU',
+    'france': 'FRA',
+    'switzerland': 'CHE',
+    'australia': 'AUS',
+    'japan': 'JPN',
+    'finland': 'FIN',
+    'singapore': 'SGP',
+    'united arab emirates': 'ARE',
+    'canada': 'CAN',
+    'uruguay': 'URY',
+    'bahrain': 'BHR',
+    'italy': 'ITA',
+    'spain': 'ESP',
+    'south africa': 'ZAF',
+    'poland': 'POL',
+    'israel': 'ISR',
+    'estonia': 'EST',
+}
+
+def get_country_iso_code(country_name):
+    """Convert country name to ISO-3 code for Plotly choropleth"""
+    if pd.isna(country_name):
+        return None
+    country_lower = str(country_name).strip().lower()
+    return COUNTRY_MAPPING.get(country_lower, None)
 
 # ======================== GET OWNERS LIST ========================
 try:
@@ -278,12 +343,88 @@ def create_visualizations(selected_owner, theme='light'):
             yaxis=dict(gridcolor=theme_config['border_color']),
         )
         
-        return fig_connections, fig_companies, fig_company_pie, fig_level_bar, total_connections, total_companies
+        # 5. Vertical Bar Chart - Industry Distribution
+        if filter_by_owner:
+            industry_dist = fetch_query(QUERY_INDUSTRY_DISTRIBUTION, (selected_owner,))
+        else:
+            industry_dist = fetch_query(QUERY_INDUSTRY_DISTRIBUTION_ALL)
+        
+        if len(industry_dist) > 0:
+            fig_industry_bar = px.bar(
+                industry_dist,
+                x='industry',
+                y='Count',
+                title='Companies by Industry',
+                labels={'Count': 'Number of Companies', 'industry': 'Industry'},
+                color='Count',
+                color_continuous_scale='Blues',
+            )
+            fig_industry_bar.update_traces(
+                text=industry_dist['Count'],
+                textposition='outside',
+                textfont=dict(size=10),
+                hovertemplate='<b>%{x}</b><br>Count: %{y}<extra></extra>'
+            )
+        else:
+            fig_industry_bar = go.Figure().add_annotation(text="No data available")
+        
+        fig_industry_bar.update_layout(
+            height=400,
+            title={'font': {'size': 16, 'color': theme_config['text_primary']}},
+            font=dict(family='Inter, -apple-system, sans-serif', size=11, color=theme_config['text_secondary']),
+            paper_bgcolor=theme_config['bg_secondary'],
+            plot_bgcolor=theme_config['bg_secondary'],
+            showlegend=False,
+            xaxis_title='Industry',
+            yaxis_title='Count',
+            margin=dict(l=50, r=20, t=40, b=60),
+            xaxis=dict(tickangle=45, gridcolor=theme_config['border_color']),
+            yaxis=dict(gridcolor=theme_config['border_color']),
+        )
+        
+        # 6. World Map - Country Distribution
+        if filter_by_owner:
+            country_dist = fetch_query(QUERY_COUNTRY_DISTRIBUTION, (selected_owner,))
+        else:
+            country_dist = fetch_query(QUERY_COUNTRY_DISTRIBUTION_ALL)
+        
+        if len(country_dist) > 0:
+            # Convert country names to ISO-3 codes
+            country_dist['iso_code'] = country_dist['country'].apply(get_country_iso_code)
+            country_dist = country_dist.dropna(subset=['iso_code'])
+            
+            if len(country_dist) > 0:
+                fig_country_map = px.choropleth(
+                    country_dist,
+                    locations='iso_code',
+                    locationmode='ISO-3',
+                    color='Count',
+                    hover_name='country',
+                    hover_data={'iso_code': False, 'Count': True},
+                    title='Global Presence by Country',
+                    color_continuous_scale='Viridis',
+                )
+            else:
+                fig_country_map = go.Figure().add_annotation(text="No data available")
+        else:
+            fig_country_map = go.Figure().add_annotation(text="No data available")
+        
+        fig_country_map.update_layout(
+            height=450,
+            title={'font': {'size': 16, 'color': theme_config['text_primary']}},
+            font=dict(family='Inter, -apple-system, sans-serif', size=11, color=theme_config['text_secondary']),
+            paper_bgcolor=theme_config['bg_secondary'],
+            plot_bgcolor=theme_config['bg_secondary'],
+            geo=dict(showframe=False, projection_type='natural earth'),
+            margin=dict(l=0, r=0, t=40, b=0),
+        )
+        
+        return fig_connections, fig_companies, fig_company_pie, fig_level_bar, fig_industry_bar, fig_country_map, total_connections, total_companies
     
     except Exception as e:
         print(f"Error in create_visualizations: {str(e)}")
         empty_fig = go.Figure()
-        return empty_fig, empty_fig, empty_fig, empty_fig, 0, 0
+        return empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, 0, 0
 
 # ======================== CREATE DASH APP ========================
 app = Dash(__name__)
@@ -350,6 +491,17 @@ app.layout = html.Div([
                     ], id='bar-card'),
                 ], style=get_chart_row_style()),
                 
+                # Industry & Country Row
+                html.Div([
+                    html.Div([
+                        dcc.Graph(id='industry-bar-chart', config={'displayModeBar': True, 'displaylogo': False})
+                    ], id='industry-card', style={'flex': '1', 'minWidth': '400px', 'borderRadius': '8px', 'overflow': 'hidden', 'boxShadow': '0 2px 6px rgba(0,0,0,0.1)', 'transition': 'all 0.3s ease', 'marginRight': '15px'}),
+                    
+                    html.Div([
+                        dcc.Graph(id='country-map-chart', config={'displayModeBar': True, 'displaylogo': False})
+                    ], id='country-card', style={'flex': '1', 'minWidth': '400px', 'borderRadius': '8px', 'overflow': 'hidden', 'boxShadow': '0 2px 6px rgba(0,0,0,0.1)', 'transition': 'all 0.3s ease'}),
+                ], style=get_chart_row_style()),
+                
                 # Summary Section
                 html.Div([
                     html.Div([
@@ -404,45 +556,29 @@ def toggle_theme(n_clicks, current_theme):
      Output('kpi-companies', 'figure'),
      Output('company-pie-chart', 'figure'),
      Output('level-bar-chart', 'figure'),
+     Output('industry-bar-chart', 'figure'),
+     Output('country-map-chart', 'figure'),
      Output('summary-connections', 'children'),
-     Output('summary-companies', 'children')],
-    #  Output('summary-average', 'children')],
+     Output('summary-companies', 'children'),
+     Output('summary-average', 'children')],
     [Input('owner-dropdown', 'value'),
      Input('theme-store', 'data')]
 )
 def update_dashboard(selected_owner, theme):
     try:
-        fig_conn, fig_comp, fig_pie, fig_bar, total_conn, total_comp = create_visualizations(selected_owner, theme)
-        
-        # avg_connections = float(total_conn) / float(total_comp) if total_comp > 0 else 0
-        
-        summary_conn = f'✓ Distinct Connections: {int(total_conn)}'
-        summary_comp = f'✓ Total Companies: {int(total_comp)}'
-        # summary_avg = f'✓ Avg per Company: {avg_connections:.1f}'
-        return fig_conn, fig_comp, fig_pie, fig_bar, summary_conn, summary_comp
-    except Exception as e:
-        print(f"Error in update_dashboard callback: {str(e)}")
-        empty_fig = go.Figure()
-        return empty_fig, empty_fig, empty_fig, empty_fig, 'Error', 'Error', 'Error'
-
-# ======================== RUN APP ========================
-if __name__ == '__main__':
-    app.run(debug=True, port=8050)
-def update_dashboard(selected_owner, theme):
-    try:
-        fig_conn, fig_comp, fig_pie, fig_bar, total_conn, total_comp = create_visualizations(selected_owner, theme)
+        fig_conn, fig_comp, fig_pie, fig_bar, fig_industry, fig_country, total_conn, total_comp = create_visualizations(selected_owner, theme)
         
         avg_connections = float(total_conn) / float(total_comp) if total_comp > 0 else 0
         
         summary_conn = f'✓ Distinct Connections: {int(total_conn)}'
         summary_comp = f'✓ Total Companies: {int(total_comp)}'
-        # summary_avg = f'✓ Avg per Company: {avg_connections:.1f}'
+        summary_avg = f'✓ Avg per Company: {avg_connections:.1f}'
         
-        return fig_conn, fig_comp, fig_pie, fig_bar, summary_conn, summary_comp
+        return fig_conn, fig_comp, fig_pie, fig_bar, fig_industry, fig_country, summary_conn, summary_comp, summary_avg
     except Exception as e:
         print(f"Error in update_dashboard callback: {str(e)}")
         empty_fig = go.Figure()
-        return empty_fig, empty_fig, empty_fig, empty_fig, 'Error', 'Error', 'Error'
+        return empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, 'Error', 'Error', 'Error'
 
 # ======================== RUN APP ========================
 if __name__ == '__main__':

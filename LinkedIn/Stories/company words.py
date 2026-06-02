@@ -152,8 +152,8 @@ coList=list(df["Updated_Company"])
 #     reader = csv.reader(file)
 #
 for Company in coList:
-#         if cnt == 0:
-#             cnt += 1
+#         if freq == 0:
+#             freq += 1
 #             continue
 #
 #         First_Name,Last_Name,URL,Email_Address,Company,Updated_Company,Position,Base_Role,Seniority,Connected_On,Owner = line

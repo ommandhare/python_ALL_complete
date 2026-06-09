@@ -241,7 +241,28 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Radar_Codes\csc_item_score.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Radar_Codes\global_synoym.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Radar_Codes\ing_cls\Clusters.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Radar_Codes\ing_cls\Ing_desc_replaced.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

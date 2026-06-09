@@ -1,6 +1,6 @@
 from utility import combUtility as c
 import pandas as pd
-path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Radar_Codes\composite word.csv"
+path= r"/Radar_Codes/composite word.csv"
 cmbList=[]
 cmbDict={}
 for data in open(path):

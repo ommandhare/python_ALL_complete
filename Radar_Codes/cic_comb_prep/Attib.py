@@ -2,7 +2,7 @@ import sys
 import os
 import pandas as pd
 wpath=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Radar_Codes\word_attrib 1.csv"
-path=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Radar_Codes\Synonym_Replaces.csv"
+path= r"/Radar_Codes/Synonym_Replaces.csv"
 stop_word=r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Radar_Codes\stop_words (1).csv"
 # -------------------------- prep synonym word replace prg ----------------------------- #
 

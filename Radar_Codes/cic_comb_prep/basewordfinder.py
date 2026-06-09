@@ -53,7 +53,7 @@ def genSynonymsData(word,wordLenDict,wordCntDict):
 
 
 
-path= r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Radar_Codes\Word Count.csv"
+path= r"/Radar_Codes/Word Count.csv"
 
 wordCntDict = {}
 wordLenDict = {}

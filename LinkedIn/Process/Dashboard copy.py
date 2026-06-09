@@ -113,7 +113,7 @@ LIMIT 15
 
 # Query to get country distribution
 QUERY_COUNTRY_DISTRIBUTION = """
-SELECT country, COUNT(*) as Count
+SELECT country, COUNT(DISTINCT URL) as Count
 FROM linkedin_comapanies_extented
 WHERE owner = %s
 GROUP BY country
@@ -121,10 +121,59 @@ ORDER BY Count DESC
 """
 
 QUERY_COUNTRY_DISTRIBUTION_ALL = """
-SELECT country, COUNT(*) as Count
+SELECT country, COUNT(DISTINCT URL) as Count
 FROM linkedin_comapanies_extented
 GROUP BY country
 ORDER BY Count DESC
+"""
+
+# Query to get connections over time by year and month
+QUERY_CONNECTIONS_TIMELINE = """
+SELECT YEAR(Connected_on_clean) as Year, MONTHNAME(Connected_on_clean) as Month, MONTH(Connected_on_clean) as MonthNum, COUNT(*) AS Connected
+FROM linkedin_comapanies_extented
+WHERE owner = %s
+GROUP BY YEAR(Connected_on_clean), MONTH(Connected_on_clean), MONTHNAME(Connected_on_clean)
+ORDER BY YEAR(Connected_on_clean), MONTH(Connected_on_clean)
+"""
+
+QUERY_CONNECTIONS_TIMELINE_ALL = """
+SELECT YEAR(Connected_on_clean) as Year, MONTHNAME(Connected_on_clean) as Month, MONTH(Connected_on_clean) as MonthNum, COUNT(*) AS Connected
+FROM linkedin_comapanies_extented
+GROUP BY YEAR(Connected_on_clean), MONTH(Connected_on_clean), MONTHNAME(Connected_on_clean)
+ORDER BY YEAR(Connected_on_clean), MONTH(Connected_on_clean)
+"""
+
+# Query to get connections by year only
+QUERY_CONNECTIONS_BY_YEAR = """
+SELECT YEAR(Connected_on_clean) as Year, COUNT(*) AS Connected
+FROM linkedin_comapanies_extented
+WHERE owner = %s
+GROUP BY YEAR(Connected_on_clean)
+ORDER BY YEAR(Connected_on_clean)
+"""
+
+QUERY_CONNECTIONS_BY_YEAR_ALL = """
+SELECT YEAR(Connected_on_clean) as Year, COUNT(*) AS Connected
+FROM linkedin_comapanies_extented
+GROUP BY YEAR(Connected_on_clean)
+ORDER BY YEAR(Connected_on_clean)
+"""
+
+# Query to get connections by month for a specific year
+QUERY_CONNECTIONS_BY_MONTH = """
+SELECT MONTHNAME(Connected_on_clean) as Month, MONTH(Connected_on_clean) as MonthNum, COUNT(*) AS Connected
+FROM linkedin_comapanies_extented
+WHERE owner = %s AND YEAR(Connected_on_clean) = %s
+GROUP BY YEAR(Connected_on_clean), MONTH(Connected_on_clean), MONTHNAME(Connected_on_clean)
+ORDER BY MONTH(Connected_on_clean)
+"""
+
+QUERY_CONNECTIONS_BY_MONTH_ALL = """
+SELECT MONTHNAME(Connected_on_clean) as Month, MONTH(Connected_on_clean) as MonthNum, COUNT(*) AS Connected
+FROM linkedin_comapanies_extented
+WHERE YEAR(Connected_on_clean) = %s
+GROUP BY YEAR(Connected_on_clean), MONTH(Connected_on_clean), MONTHNAME(Connected_on_clean)
+ORDER BY MONTH(Connected_on_clean)
 """
 
 # ======================== DATABASE CONNECTION FUNCTION ========================
@@ -205,8 +254,15 @@ except Exception as e:
 print(f"Available Owners: {owners_list}")
 
 # ======================== FUNCTION TO CREATE VISUALIZATIONS ========================
-def create_visualizations(selected_owner, theme='light'):
-    """Create all visualizations based on SQL queries"""
+def create_visualizations(selected_owner, theme='light', drill_level='year_month', selected_year=None):
+    """Create all visualizations based on SQL queries
+    
+    Args:
+        selected_owner: The selected owner filter
+        theme: 'light' or 'dark'
+        drill_level: 'year_month' (full), 'year' (by year), or 'month' (by month of a year)
+        selected_year: The selected year for month drill-down
+    """
     
     try:
         theme_config = THEMES[theme]
@@ -369,7 +425,7 @@ def create_visualizations(selected_owner, theme='light'):
             fig_industry_bar = go.Figure().add_annotation(text="No data available")
         
         fig_industry_bar.update_layout(
-            height=400,
+            height=450,
             title={'font': {'size': 16, 'color': theme_config['text_primary']}},
             font=dict(family='Inter, -apple-system, sans-serif', size=11, color=theme_config['text_secondary']),
             paper_bgcolor=theme_config['bg_secondary'],
@@ -419,12 +475,115 @@ def create_visualizations(selected_owner, theme='light'):
             margin=dict(l=0, r=0, t=40, b=0),
         )
         
-        return fig_connections, fig_companies, fig_company_pie, fig_level_bar, fig_industry_bar, fig_country_map, total_connections, total_companies
+        # 7. Connections Timeline - Line Chart with Drill-down
+        available_years = []
+        
+        if drill_level == 'year':
+            # View by Year only
+            if filter_by_owner:
+                timeline_dist = fetch_query(QUERY_CONNECTIONS_BY_YEAR, (selected_owner,))
+            else:
+                timeline_dist = fetch_query(QUERY_CONNECTIONS_BY_YEAR_ALL)
+            
+            if len(timeline_dist) > 0:
+                available_years = timeline_dist['Year'].astype(int).tolist()
+                fig_timeline = px.line(
+                    timeline_dist,
+                    x='Year',
+                    y='Connected',
+                    title='Connections by Year',
+                    labels={'Connected': 'Number of Connections', 'Year': 'Year'},
+                    markers=True,
+                )
+                fig_timeline.update_traces(
+                    line=dict(color=theme_config['accent_blue'], width=3),
+                    marker=dict(size=10, color=theme_config['accent_blue']),
+                    hovertemplate='<b>Year: %{x}</b><br>Connections: %{y}<extra></extra>'
+                )
+            else:
+                fig_timeline = go.Figure().add_annotation(text="No data available")
+            
+            chart_title = 'Connections by Year'
+            
+        elif drill_level == 'month' and selected_year:
+            # View by Month for a specific year
+            if filter_by_owner:
+                timeline_dist = fetch_query(QUERY_CONNECTIONS_BY_MONTH, (selected_owner, selected_year))
+            else:
+                timeline_dist = fetch_query(QUERY_CONNECTIONS_BY_MONTH_ALL, (selected_year,))
+            
+            if len(timeline_dist) > 0:
+                fig_timeline = px.line(
+                    timeline_dist,
+                    x='Month',
+                    y='Connected',
+                    title=f'Connections by Month ({selected_year})',
+                    labels={'Connected': 'Number of Connections', 'Month': 'Month'},
+                    markers=True,
+                )
+                fig_timeline.update_traces(
+                    line=dict(color=theme_config['accent_orange'], width=3),
+                    marker=dict(size=10, color=theme_config['accent_orange']),
+                    hovertemplate='<b>%{x}</b><br>Connections: %{y}<extra></extra>'
+                )
+            else:
+                fig_timeline = go.Figure().add_annotation(text="No data available")
+            
+            chart_title = f'Connections by Month ({selected_year})'
+            
+        else:
+            # Default: View by Year-Month
+            if filter_by_owner:
+                timeline_dist = fetch_query(QUERY_CONNECTIONS_TIMELINE, (selected_owner,))
+            else:
+                timeline_dist = fetch_query(QUERY_CONNECTIONS_TIMELINE_ALL)
+            
+            if len(timeline_dist) > 0:
+                available_years = timeline_dist['Year'].astype(int).unique().tolist()
+                available_years.sort()
+                # Create a proper date column for sorting
+                timeline_dist['YearMonth'] = timeline_dist['Year'].astype(str) + '-' + timeline_dist['Month']
+                
+                fig_timeline = px.line(
+                    timeline_dist,
+                    x='YearMonth',
+                    y='Connected',
+                    title='Connections Timeline (Year-Month)',
+                    labels={'Connected': 'Number of Connections', 'YearMonth': 'Year-Month'},
+                    markers=True,
+                )
+                fig_timeline.update_traces(
+                    line=dict(color=theme_config['accent_blue'], width=3),
+                    marker=dict(size=8, color=theme_config['accent_blue']),
+                    hovertemplate='<b>%{x}</b><br>Connections: %{y}<extra></extra>'
+                )
+            else:
+                fig_timeline = go.Figure().add_annotation(text="No data available")
+            
+            chart_title = 'Connections Timeline (Year-Month)'
+        
+        fig_timeline.update_layout(
+            height=500,
+            title={'text': chart_title, 'font': {'size': 18, 'color': theme_config['text_primary']}},
+            font=dict(family='Inter, -apple-system, sans-serif', size=11, color=theme_config['text_secondary']),
+            paper_bgcolor=theme_config['bg_secondary'],
+            plot_bgcolor=theme_config['bg_secondary'],
+            showlegend=False,
+            xaxis_title='Period',
+            yaxis_title='Number of Connections',
+            xaxis_title_font=dict(size=12, color=theme_config['text_primary']),
+            yaxis_title_font=dict(size=12, color=theme_config['text_primary']),
+            margin=dict(l=50, r=20, t=40, b=60),
+            xaxis=dict(tickangle=45, gridcolor=theme_config['border_color']),
+            yaxis=dict(gridcolor=theme_config['border_color']),
+        )
+        
+        return fig_connections, fig_companies, fig_company_pie, fig_level_bar, fig_industry_bar, fig_country_map, fig_timeline, available_years, total_connections, total_companies
     
     except Exception as e:
         print(f"Error in create_visualizations: {str(e)}")
         empty_fig = go.Figure()
-        return empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, 0, 0
+        return empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, [], 0, 0
 
 # ======================== CREATE DASH APP ========================
 app = Dash(__name__)
@@ -433,6 +592,8 @@ app.index_string = CUSTOM_CSS
 app.layout = html.Div([
     # Theme Store
     dcc.Store(id='theme-store', data='light'),
+    # Drill-down State Store
+    dcc.Store(id='drill-state-store', data={'drill_level': 'year_month', 'selected_year': None}),
     
     # Main Container with ID for callbacks
     html.Div(id='main-container', children=[
@@ -502,17 +663,36 @@ app.layout = html.Div([
                     ], id='country-card', style={'flex': '1', 'minWidth': '400px', 'borderRadius': '8px', 'overflow': 'hidden', 'boxShadow': '0 2px 6px rgba(0,0,0,0.1)', 'transition': 'all 0.3s ease'}),
                 ], style=get_chart_row_style()),
                 
-                # Summary Section
+                # Timeline Line Chart Row (Full Width) with Drill-down Controls
                 html.Div([
                     html.Div([
-                        html.H3('Summary Statistics', style=get_summary_title_style()),
                         html.Div([
-                            html.P(id='summary-connections', style=get_summary_text_style()),
-                            html.P(id='summary-companies', style=get_summary_text_style()),
-                            html.P(id='summary-average', style=get_last_summary_text_style()),
-                        ])
-                    ], id='summary-card')
-                ], style=get_summary_section_style()),
+                            html.Button('← Back', id='drill-back-btn', n_clicks=0, style={
+                                'padding': '10px 15px', 'marginRight': '10px', 'borderRadius': '4px',
+                                'border': '1px solid #ccc', 'backgroundColor': '#f5f5f5', 'cursor': 'pointer',
+                                'fontWeight': '500', 'display': 'none'
+                            }),
+                            html.Button('Drill by Year', id='drill-year-btn', n_clicks=0, style={
+                                'padding': '10px 15px', 'marginRight': '10px', 'borderRadius': '4px',
+                                'border': '1px solid #007bff', 'backgroundColor': '#e7f1ff', 'cursor': 'pointer',
+                                'fontWeight': '500', 'color': '#007bff'
+                            }),
+                            html.Button('View Year-Month', id='drill-full-btn', n_clicks=0, style={
+                                'padding': '10px 15px', 'marginRight': '10px', 'borderRadius': '4px',
+                                'border': '1px solid #ccc', 'backgroundColor': '#f5f5f5', 'cursor': 'pointer',
+                                'fontWeight': '500'
+                            }),
+                            dcc.Dropdown(
+                                id='drill-year-dropdown',
+                                options=[],
+                                value=None,
+                                placeholder='Select Year for Month Drill',
+                                style={'width': '200px', 'display': 'none'}
+                            ),
+                        ], style={'display': 'flex', 'alignItems': 'center', 'marginBottom': '15px', 'gap': '10px'}),
+                        dcc.Graph(id='timeline-line-chart', config={'displayModeBar': True, 'displaylogo': False})
+                    ], id='timeline-card', style={'width': '100%', 'borderRadius': '8px', 'overflow': 'hidden', 'boxShadow': '0 2px 6px rgba(0,0,0,0.1)', 'transition': 'all 0.3s ease', 'padding': '15px'}),
+                ], style=dict(display='flex', flexWrap='wrap', gap='15px', width='100%', marginBottom='15px')),
                 
             ], style=get_wrapper_style()),
         ], id='content-area', style=get_content_area_style()),
@@ -527,7 +707,6 @@ app.layout = html.Div([
      Output('kpi-card-2', 'style'),
      Output('pie-card', 'style'),
      Output('bar-card', 'style'),
-     Output('summary-card', 'style'),
      Output('theme-store', 'data'),
      Output('theme-toggle-btn', 'children')],
     Input('theme-toggle-btn', 'n_clicks'),
@@ -546,10 +725,56 @@ def toggle_theme(n_clicks, current_theme):
         get_kpi_card_style(theme_config, is_last=True),
         get_chart_card_style(theme_config, is_last=False),
         get_chart_card_style(theme_config, is_last=True),
-        get_summary_card_style(theme_config),
         new_theme,
         toggle_emoji
     )
+
+@app.callback(
+    Output('drill-state-store', 'data'),
+    [Input('drill-year-btn', 'n_clicks'),
+     Input('drill-full-btn', 'n_clicks'),
+     Input('drill-back-btn', 'n_clicks')],
+    State('drill-state-store', 'data'),
+    prevent_initial_call=True
+)
+def handle_drill_buttons(year_clicks, full_clicks, back_clicks, current_state):
+    """Handle drill-down button clicks only"""
+    if not current_state:
+        current_state = {'drill_level': 'year_month', 'selected_year': None}
+    
+    # Get which button was clicked using callback_context
+    from dash import callback_context
+    ctx = callback_context
+    if not ctx.triggered:
+        return current_state
+    
+    button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    
+    if button_id == 'drill-year-btn':
+        return {'drill_level': 'year', 'selected_year': None}
+    elif button_id == 'drill-full-btn':
+        return {'drill_level': 'year_month', 'selected_year': None}
+    elif button_id == 'drill-back-btn':
+        return {'drill_level': 'year', 'selected_year': None}
+    
+    return current_state
+
+@app.callback(
+    Output('drill-state-store', 'data', allow_duplicate=True),
+    Input('drill-year-dropdown', 'value'),
+    State('drill-state-store', 'data'),
+    prevent_initial_call=True
+)
+def handle_year_selection(selected_year, current_state):
+    """Handle year dropdown selection - only when a year is selected"""
+    if not current_state:
+        current_state = {'drill_level': 'year_month', 'selected_year': None}
+    
+    # Only update if we're in year view and a year is selected
+    if current_state.get('drill_level') == 'year' and selected_year:
+        return {'drill_level': 'month', 'selected_year': selected_year}
+    
+    return current_state
 
 @app.callback(
     [Output('kpi-connections', 'figure'),
@@ -558,27 +783,72 @@ def toggle_theme(n_clicks, current_theme):
      Output('level-bar-chart', 'figure'),
      Output('industry-bar-chart', 'figure'),
      Output('country-map-chart', 'figure'),
-     Output('summary-connections', 'children'),
-     Output('summary-companies', 'children'),
-     Output('summary-average', 'children')],
+     Output('timeline-line-chart', 'figure'),
+     Output('drill-year-dropdown', 'options'),
+     Output('drill-year-dropdown', 'style'),
+     Output('drill-back-btn', 'style'),
+     Output('drill-year-btn', 'style'),
+     Output('drill-full-btn', 'style')],
     [Input('owner-dropdown', 'value'),
-     Input('theme-store', 'data')]
+     Input('theme-store', 'data'),
+     Input('drill-state-store', 'data'),
+     Input('drill-year-dropdown', 'value')]
 )
-def update_dashboard(selected_owner, theme):
+def update_dashboard(selected_owner, theme, drill_state, dropdown_value):
     try:
-        fig_conn, fig_comp, fig_pie, fig_bar, fig_industry, fig_country, total_conn, total_comp = create_visualizations(selected_owner, theme)
+        if not drill_state:
+            drill_state = {'drill_level': 'year_month', 'selected_year': None}
         
-        avg_connections = float(total_conn) / float(total_comp) if total_comp > 0 else 0
+        fig_conn, fig_comp, fig_pie, fig_bar, fig_industry, fig_country, fig_timeline, available_years, total_conn, total_comp = create_visualizations(
+            selected_owner, theme, drill_state['drill_level'], drill_state['selected_year']
+        )
         
-        summary_conn = f'✓ Distinct Connections: {int(total_conn)}'
-        summary_comp = f'✓ Total Companies: {int(total_comp)}'
-        summary_avg = f'✓ Avg per Company: {avg_connections:.1f}'
+        # Prepare year dropdown options
+        year_options = [{'label': str(year), 'value': year} for year in available_years]
         
-        return fig_conn, fig_comp, fig_pie, fig_bar, fig_industry, fig_country, summary_conn, summary_comp, summary_avg
+        # Dropdown styling based on drill level
+        dropdown_style = {
+            'width': '200px',
+            'display': 'block' if drill_state['drill_level'] == 'year' else 'none'
+        }
+        
+        # Button styling based on drill level
+        active_style = {'padding': '10px 15px', 'marginRight': '10px', 'borderRadius': '4px',
+                       'border': '1px solid #007bff', 'backgroundColor': '#e7f1ff', 'cursor': 'pointer',
+                       'fontWeight': '500', 'color': '#007bff'}
+        inactive_style = {'padding': '10px 15px', 'marginRight': '10px', 'borderRadius': '4px',
+                         'border': '1px solid #ccc', 'backgroundColor': '#f5f5f5', 'cursor': 'pointer',
+                         'fontWeight': '500'}
+        
+        back_btn_style = inactive_style.copy()
+        back_btn_style['display'] = 'block' if drill_state['drill_level'] in ['year', 'month'] else 'none'
+        
+        year_btn_style = active_style if drill_state['drill_level'] == 'year' else inactive_style
+        full_btn_style = active_style if drill_state['drill_level'] == 'year_month' else inactive_style
+        
+        return (
+            fig_conn, fig_comp, fig_pie, fig_bar, fig_industry, fig_country, fig_timeline,
+            year_options, dropdown_style, back_btn_style, year_btn_style, full_btn_style
+        )
     except Exception as e:
         print(f"Error in update_dashboard callback: {str(e)}")
         empty_fig = go.Figure()
-        return empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, 'Error', 'Error', 'Error'
+        empty_style = {}
+        return (
+            empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, empty_fig, empty_fig,
+            [], {}, {}, {}, {}
+        )
+
+# Sync dropdown value with drill_state selected_year
+@app.callback(
+    Output('drill-year-dropdown', 'value'),
+    Input('drill-state-store', 'data')
+)
+def sync_dropdown_with_drill_state(drill_state):
+    """Keep dropdown value in sync with selected_year in drill_state"""
+    if not drill_state or drill_state.get('drill_level') != 'month':
+        return None
+    return drill_state.get('selected_year', None)
 
 # ======================== RUN APP ========================
 if __name__ == '__main__':

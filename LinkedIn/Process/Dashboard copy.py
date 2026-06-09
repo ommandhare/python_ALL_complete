@@ -113,7 +113,7 @@ LIMIT 15
 
 # Query to get country distribution
 QUERY_COUNTRY_DISTRIBUTION = """
-SELECT country, COUNT(DISTINCT URL) as Count
+SELECT country, COUNT(*) as Count
 FROM linkedin_comapanies_extented
 WHERE owner = %s
 GROUP BY country
@@ -121,7 +121,7 @@ ORDER BY Count DESC
 """
 
 QUERY_COUNTRY_DISTRIBUTION_ALL = """
-SELECT country, COUNT(DISTINCT URL) as Count
+SELECT country, COUNT(*) as Count
 FROM linkedin_comapanies_extented
 GROUP BY country
 ORDER BY Count DESC
@@ -230,6 +230,44 @@ COUNTRY_MAPPING = {
     'poland': 'POL',
     'israel': 'ISR',
     'estonia': 'EST',
+    'netherlands': 'NLD',
+    'sweden': 'SWE',
+    'norway': 'NOR',
+    'denmark': 'DNK',
+    'belgium': 'BEL',
+    'austria': 'AUT',
+    'portugal': 'PRT',
+    'brazil': 'BRA',
+    'mexico': 'MEX',
+    'argentina': 'ARG',
+    'china': 'CHN',
+    'hong kong': 'HKG',
+    'south korea': 'KOR',
+    'indonesia': 'IDN',
+    'malaysia': 'MYS',
+    'thailand': 'THA',
+    'philippines': 'PHL',
+    'vietnam': 'VNM',
+    'new zealand': 'NZL',
+    'egypt': 'EGY',
+    'nigeria': 'NGA',
+    'kenya': 'KEN',
+    'saudi arabia': 'SAU',
+    'qatar': 'QAT',
+    'kuwait': 'KWT',
+    'turkey': 'TUR',
+    'russia': 'RUS',
+    'ukraine': 'UKR',
+    'czech republic': 'CZE',
+    'hungary': 'HUN',
+    'romania': 'ROU',
+    'greece': 'GRC',
+    'ireland': 'IRL',
+    'luxembourg': 'LUX',
+    'pakistan': 'PAK',
+    'bangladesh': 'BGD',
+    'sri lanka': 'LKA',
+    'nepal': 'NPL',
 }
 
 def get_country_iso_code(country_name):
@@ -438,43 +476,93 @@ def create_visualizations(selected_owner, theme='light', drill_level='year_month
             yaxis=dict(gridcolor=theme_config['border_color']),
         )
         
-        # 6. World Map - Country Distribution
+        # ======================== 6. GLOBAL PRESENCE BY COUNTRY (CHOROPLETH MAP) ========================
         if filter_by_owner:
             country_dist = fetch_query(QUERY_COUNTRY_DISTRIBUTION, (selected_owner,))
         else:
             country_dist = fetch_query(QUERY_COUNTRY_DISTRIBUTION_ALL)
-        
-        if len(country_dist) > 0:
-            # Convert country names to ISO-3 codes
-            country_dist['iso_code'] = country_dist['country'].apply(get_country_iso_code)
-            country_dist = country_dist.dropna(subset=['iso_code'])
-            
-            if len(country_dist) > 0:
-                fig_country_map = px.choropleth(
-                    country_dist,
-                    locations='iso_code',
-                    locationmode='ISO-3',
-                    color='Count',
-                    hover_name='country',
-                    hover_data={'iso_code': False, 'Count': True},
-                    title='Global Presence by Country',
-                    color_continuous_scale='Viridis',
-                )
-            else:
-                fig_country_map = go.Figure().add_annotation(text="No data available")
+
+        # Theme-aware land/ocean colors
+        if theme == 'dark':
+            land_color = '#2a2a2a'
+            ocean_color = '#1a2a3a'
         else:
-            fig_country_map = go.Figure().add_annotation(text="No data available")
-        
+            land_color = '#f0ece4'
+            ocean_color = '#d6eaf8'
+
+        fig_country_map = go.Figure()  # always initialize first
+
+        if len(country_dist) > 0 and country_dist['country'].notna().any():
+            country_dist = country_dist.dropna(subset=['country'])
+            country_dist['iso_alpha'] = country_dist['country'].apply(get_country_iso_code)
+            country_dist_mapped = country_dist.dropna(subset=['iso_alpha'])
+
+            # DEBUG - remove after confirming map works
+            print("=== RAW COUNTRY VALUES FROM DB ===")
+            for val in country_dist['country'].tolist():
+                print(repr(val))
+            print("=== UNMAPPED COUNTRIES ===")
+            unmapped = country_dist[country_dist['iso_alpha'].isna()]['country'].tolist()
+            print(unmapped)
+
+            if len(country_dist_mapped) > 0:
+                fig_country_map.add_trace(go.Choropleth(
+                    locations=country_dist_mapped['iso_alpha'],
+                    z=country_dist_mapped['Count'].astype(float),
+                    text=country_dist_mapped['country'],
+                    colorscale='Turbo',
+                    autocolorscale=False,
+                    reversescale=False,
+                    marker_line_color='white',
+                    marker_line_width=0.5,
+                    colorbar_title='Connections',
+                    hovertemplate='<b>%{text}</b><br>Connections: %{z}<extra></extra>',
+                ))
+            else:
+                fig_country_map.add_annotation(
+                    text="No mappable country data — check terminal for unmapped values",
+                    xref="paper", yref="paper", x=0.5, y=0.5,
+                    showarrow=False,
+                    font=dict(size=13, color=theme_config['text_secondary'])
+                )
+        else:
+            fig_country_map.add_annotation(
+                text="No country data available",
+                xref="paper", yref="paper", x=0.5, y=0.5,
+                showarrow=False,
+                font=dict(size=13, color=theme_config['text_secondary'])
+            )
+
         fig_country_map.update_layout(
             height=450,
-            title={'font': {'size': 16, 'color': theme_config['text_primary']}},
-            font=dict(family='Inter, -apple-system, sans-serif', size=11, color=theme_config['text_secondary']),
+            title={
+                'text': 'Global Presence by Country',
+                'font': {'size': 16, 'color': theme_config['text_primary']}
+            },
+            font=dict(
+                family='Inter, -apple-system, sans-serif',
+                size=11,
+                color=theme_config['text_secondary']
+            ),
             paper_bgcolor=theme_config['bg_secondary'],
-            plot_bgcolor=theme_config['bg_secondary'],
-            geo=dict(showframe=False, projection_type='natural earth'),
             margin=dict(l=0, r=0, t=40, b=0),
+            geo=dict(
+                showframe=False,
+                showcoastlines=True,
+                coastlinecolor='Gray',
+                showland=True,
+                landcolor=land_color,
+                showocean=True,
+                oceancolor=ocean_color,
+                showlakes=False,
+                showcountries=True,
+                countrycolor='Gray',
+                projection_type='natural earth',
+                bgcolor=theme_config['bg_secondary'],
+            ),
         )
-        
+        # ======================== END CHOROPLETH MAP ========================
+
         # 7. Connections Timeline - Line Chart with Drill-down
         available_years = []
         
@@ -852,4 +940,4 @@ def sync_dropdown_with_drill_state(drill_state):
 
 # ======================== RUN APP ========================
 if __name__ == '__main__':
-    app.run(debug=True, port=8050)
+    app.run(debug=True, port=8000)

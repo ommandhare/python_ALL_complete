@@ -484,11 +484,11 @@ def create_visualizations(selected_owner, theme='light', drill_level='year_month
 
         # Theme-aware land/ocean colors
         if theme == 'dark':
-            land_color = '#2a2a2a'
-            ocean_color = '#1a2a3a'
+            land_color = "#ffffff"
+            ocean_color = "#c5f1f9"
         else:
             land_color = '#f0ece4'
-            ocean_color = '#d6eaf8'
+            ocean_color = "#c5f1f9"
 
         fig_country_map = go.Figure()  # always initialize first
 
@@ -688,7 +688,7 @@ app.layout = html.Div([
         # Navigation Header
         html.Div([
             html.Div([
-                html.H1('LinkedIn Connections', style=get_title_style()),
+                html.H1('Sahastra Arjun', style=get_title_style()),
                 html.P('Analytics Dashboard', style=get_subtitle_style()),
             ], style={'flex': '1'}),
             

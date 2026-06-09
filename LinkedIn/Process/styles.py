@@ -74,7 +74,7 @@ def get_header_style():
     }
 
 def get_title_style():
-    return {'fontSize': '24px', 'fontWeight': '600', 'color': '#ffffff', 'margin': '0'}
+    return {'fontSize': '24px', 'fontWeight': '600', 'color': '#ffffff', 'margin': '0', 'textTransform': 'uppercase'}
 
 def get_subtitle_style():
     return {'fontSize': '12px', 'color': 'rgba(255,255,255,0.8)', 'margin': '2px 0 0 0'}

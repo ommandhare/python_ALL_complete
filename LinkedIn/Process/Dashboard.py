@@ -498,12 +498,12 @@ def create_visualizations(selected_owner, theme='light', drill_level='year_month
             country_dist_mapped = country_dist.dropna(subset=['iso_alpha'])
 
             # DEBUG - remove after confirming map works
-            print("=== RAW COUNTRY VALUES FROM DB ===")
-            for val in country_dist['country'].tolist():
-                print(repr(val))
-            print("=== UNMAPPED COUNTRIES ===")
-            unmapped = country_dist[country_dist['iso_alpha'].isna()]['country'].tolist()
-            print(unmapped)
+            # print("=== RAW COUNTRY VALUES FROM DB ===")
+            # for val in country_dist['country'].tolist():
+                # print(repr(val))
+            # print("=== UNMAPPED COUNTRIES ===")
+            # unmapped = country_dist[country_dist['iso_alpha'].isna()]['country'].tolist()
+            # print(unmapped)
 
             if len(country_dist_mapped) > 0:
                 fig_country_map.add_trace(go.Choropleth(
@@ -763,7 +763,7 @@ app.layout = html.Div([
                             html.Button('Drill by Year', id='drill-year-btn', n_clicks=0, style={
                                 'padding': '10px 15px', 'marginRight': '10px', 'borderRadius': '4px',
                                 'border': '1px solid #007bff', 'backgroundColor': '#e7f1ff', 'cursor': 'pointer',
-                                'fontWeight': '500', 'color': '#007bff'
+                                'fontWeight': '500', 'color': "#00ff51"
                             }),
                             html.Button('View Year-Month', id='drill-full-btn', n_clicks=0, style={
                                 'padding': '10px 15px', 'marginRight': '10px', 'borderRadius': '4px',

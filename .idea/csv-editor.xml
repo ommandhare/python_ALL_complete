@@ -164,56 +164,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Radar_Codes\Baseword.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\Item_Attribut_table.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\Merged_Synoyms.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\Synonym_Replaces.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\Word Count.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\cic_comb\Word_Combination.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\Radar_Codes\cic_comb\Word_Count.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\cic_comb\word_Combination.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -227,28 +178,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Radar_Codes\composite comb replaced.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\composite word.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\Radar_Codes\csc_item_score.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\global_synoym.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
@@ -263,27 +193,6 @@
           </value>
         </entry>
         <entry key="\Radar_Codes\ing_cls\Ing_desc_replaced.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\prunned.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\stop_words (1).csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\Radar_Codes\word_attrib 1.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

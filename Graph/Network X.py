@@ -8,7 +8,6 @@ G.add_edges_from([
     ("Om", "Amit"),
     ("jay", "Priya"),
     ("Priya", "Amit"),
-    ("Amit","jay"),
     ("Om","Prem")
 ])
 

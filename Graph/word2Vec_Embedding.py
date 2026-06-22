@@ -19,7 +19,4 @@ model = Word2Vec(
 )
 
 print("Embedding....")
-print(model.wv["sql"])
-
-print("Most Similar...")
-print(model.wv.most_similar("python",topn=3))
+print(model.wv["python"])

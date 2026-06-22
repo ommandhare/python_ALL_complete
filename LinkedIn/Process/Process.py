@@ -67,7 +67,7 @@ for file in os.listdir(folderPath):
         print("Levels Extracted")
 
         updated_df=cn.normalize_company(updated_df)
-        print("Company Norma")
+        print("Company Normalized")
 
         updated_df["Owner"]=Name
         #
@@ -75,7 +75,6 @@ for file in os.listdir(folderPath):
 
             masterDf = updated_df.copy()
 
-            # OTHER FILES
         else:
 
             # force same columns/order

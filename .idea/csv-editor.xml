@@ -66,20 +66,6 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\LinkedIn\Process_sql\Final_flat_table.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
-        <entry key="\LinkedIn\Process_sql\data\Company word Separated.csv">
-          <value>
-            <Attribute>
-              <option name="separator" value="," />
-            </Attribute>
-          </value>
-        </entry>
         <entry key="\LinkedIn\Stories\Company Count.csv">
           <value>
             <Attribute>

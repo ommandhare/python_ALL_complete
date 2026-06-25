@@ -1,5 +1,4 @@
 import pandas as pd
-import os
 import mysql.connector
 import sqlalchemy
 # from sqlalchemy import create_engine
@@ -16,15 +15,37 @@ import companyNormalization as cn
 print(pd.__version__)
 print(sqlalchemy.__version__)
 
-folderPath = r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Process\data"
+# folderPath = r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\LinkedIn\Process\data"
+
+
 
 # # Final Combined DF
-masterDf = pd.DataFrame(columns=["First Name","Last Name","URL","Email Address","Company","Updated Company","Position","Base Role","Seniority","Connected On","Owner"])
+masterDf = pd.DataFrame(columns=
+                        ["First Name",
+                        "Last Name",
+                        "URL",
+                        "Email Address",
+                        "Company",
+                        "Updated Company",
+                        "Position",
+                        "Base Role",
+                        "Seniority",
+                        "Connected On",
+                        "Owner"])
 
 QUERY_TOTAL_CONNECTIONS=''' SELECT * FROM connections.all_connections '''
 
-import mysql.connector
-import pandas as pd
+
+QUERY_ALL_COMPANIES=''' SELECT * FROM connections.all_companies '''
+
+JOIN_QUERY = ''' SELECT c.*,
+                 a.company AS original_company,
+                 a.country,a.industry FROM connect_project.all_companies a
+                JOIN final_flat_table c
+                ON a.company=c.Updated_Company
+                and country <> ("nan") and country is not null;
+                 '''
+
 
 
 def dataframe_to_mysql(
@@ -141,38 +162,21 @@ def get_db_connection():
         database='connections'
     )
 
-
-
-def get_db_connection_sql():
-
-    engine = create_engine(
-        "mysql+pymysql://root:0777@localhost/connections"
-    )
-
-    return engine
-
+conn = get_db_connection()
+cursor = conn.cursor()
 
 # ======================== FUNCTION TO FETCH DATA FROM DATABASE ========================
 def fetch_query(query, params=None):
     """Execute query and return dataframe"""
-    try:
-        conn = get_db_connection()
-        cursor = conn.cursor()
-        
-        if params:
-            cursor.execute(query, params)
-        else:
-            cursor.execute(query)
-        
-        results = cursor.fetchall()
-        columns = [desc[0] for desc in cursor.description] if cursor.description else []
-        cursor.close()
-        conn.close()
-        
-        return pd.DataFrame(results, columns=columns)
-    except Exception as e:
-        print(f"Database Error: {str(e)}")
-        return pd.DataFrame()
+    if params:
+        cursor.execute(query, params)
+    else:
+        cursor.execute(query)
+    results = cursor.fetchall()
+    columns = [desc[0] for desc in cursor.description] if cursor.description else []
+    cursor.close()
+    conn.close()
+    return pd.DataFrame(results, columns=columns)
 
 
 
@@ -184,59 +188,70 @@ master_input_df = fetch_query(QUERY_TOTAL_CONNECTIONS)
 # Loop all files
 for owner in master_input_df["Owner"].unique():
 
-            print(f"Processing : {owner}")
+    print(f"Processing : {owner}")
 
-            # Filter one person's data
-            df_path = master_input_df[
-                master_input_df["Owner"] == owner
-            ].copy()
+    # Filter one person's data
+    df_path = master_input_df[
+        master_input_df["Owner"] == owner
+    ].copy()
 
-            # print(df_path)
+    # print(df_path)
 
-            # Clean column names
-            df_path.columns = df_path.columns.str.strip()
+    # Clean column names
+    df_path.columns = df_path.columns.str.strip()
 
-            df_path.columns = df_path.columns.str.replace(" ", "_")
+    df_path.columns = df_path.columns.str.replace(" ", "_")
 
-            #  Match schema
-            # df_path = df_path[masterDf.columns]
+    #  Match schema
+    # df_path = df_path[masterDf.columns]
 
 
-            df_role,df_co= wc.wordCount(df_path)
-            print("Word Count Done...")
-        # #
-            df_base_word = bs.baseword(df_role)
-            print("Base word Done")
-#         #
-            updated_df = br.replace_basewords(df_path,df_base_word)
-            print("Base Word Replaced")
+    df_role,df_co= wc.wordCount(df_path)
+    print("Word Count Done...")
 
-            updated_df=sn.get_levels(updated_df)
-            print("Levels Extracted")
+    df_base_word = bs.baseword(df_role)
+    print("Base word Done")
 
-            updated_df=cn.normalize_company(updated_df)
-            print("Company Normalized")
+    updated_df = br.replace_basewords(df_path,df_base_word)
+    print("Base Word Replaced")
 
-            updated_df["Owner"]=owner
-            #
-            if masterDf.empty:
+    updated_df=sn.get_levels(updated_df)
+    print("Levels Extracted")
 
-                masterDf = updated_df.copy()
+    updated_df=cn.normalize_company(updated_df)
+    print("Company Normalized")
 
-            else:
+    updated_df["Owner"]=owner
+    #
+    if masterDf.empty:
 
-                # force same columns/order
-                df = updated_df[masterDf.columns]
+        masterDf = updated_df.copy()
 
-                masterDf = pd.concat(
-                    [masterDf, df],
-                    ignore_index=True
-                )
+    else:
 
-print(masterDf)
+        # force same columns/order
+        df = updated_df[masterDf.columns]
+
+        masterDf = pd.concat(
+            [masterDf, df],
+            ignore_index=True
+        )
+
+# print(masterDf)
 masterDf.to_csv("Final_flat_table_NEW.csv")
 
-dataframe_to_mysql(
-    df=masterDf,
-    table_name="final_flat_table"
-)
+
+conn = get_db_connection()
+
+cursor = conn.cursor(dictionary=True)
+
+cursor.execute(JOIN_QUERY)
+
+rows = cursor.fetchall()
+
+df_final = pd.DataFrame(rows)
+
+
+dataframe_to_mysql(df_final,table_name="linkedin_comapanies_extented")
+print("Process is Done")
+#End of th code

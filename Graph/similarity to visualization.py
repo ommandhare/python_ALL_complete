@@ -169,10 +169,12 @@ for i,node in enumerate(model.wv.index_to_key):
         )
     )
 
-plt.title("t-SNE Graph Embeddings")
-plt.show()
+plt.title("Graph Embeddings")
+
 
 
 print("Find Similar Nodes...")
 find_similar("Om")
 find_similar("SQL")
+
+plt.show()

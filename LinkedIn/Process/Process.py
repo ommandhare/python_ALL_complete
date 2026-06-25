@@ -6,8 +6,8 @@ pd.set_option('display.max_columns',None)
 
 import WordCount as wc
 import baseword as bs
-import baseword_replacer as br
-import Seniority as sn
+import Process.baseword_replacer as br
+import Process_sql.Seniority as sn
 import companyNormalization as cn
 
 

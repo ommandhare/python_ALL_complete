@@ -251,6 +251,12 @@ rows = cursor.fetchall()
 
 df_final = pd.DataFrame(rows)
 
+df_final["Connected_On_Clean"] = pd.to_datetime(
+    df_final["Connected_On"],
+    errors="coerce"
+).dt.strftime("%Y-%m-%d")
+
+
 
 dataframe_to_mysql(df_final,table_name="linkedin_comapanies_extented")
 print("Process is Done")

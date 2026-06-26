@@ -19,7 +19,7 @@ QUERY_DISTINCT_CONNECTIONS = """
 SELECT Email_Address, First_Name, Last_Name, 
        COALESCE(Updated_Company, Company) as Company_Final,
        Seniority as Level, Owner
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 GROUP BY Email_Address
 ORDER BY Email_Address
 """
@@ -27,7 +27,7 @@ ORDER BY Email_Address
 # Query to get all owners
 QUERY_GET_OWNERS = """
 SELECT DISTINCT Owner
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 WHERE Owner IS NOT NULL AND Owner != ''
 ORDER BY Owner
 """
@@ -35,31 +35,31 @@ ORDER BY Owner
 # Query to get total connections by owner (or all)
 QUERY_TOTAL_CONNECTIONS = """
 SELECT COUNT(DISTINCT URL) as total_connections
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 WHERE Owner = %s
 """
 
 QUERY_TOTAL_CONNECTIONS_ALL = """
 SELECT COUNT(DISTINCT URL) as total_connections
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 """
 
 # Query to get total companies by owner (or all)
 QUERY_TOTAL_COMPANIES = """
 SELECT COUNT(DISTINCT COALESCE(Updated_Company, Company)) as total_companies
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 WHERE Owner = %s
 """
 
 QUERY_TOTAL_COMPANIES_ALL = """
 SELECT COUNT(DISTINCT COALESCE(Updated_Company, Company)) as total_companies
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 """
 
 # Query to get company-wise distribution (top 15)
 QUERY_COMPANY_DISTRIBUTION = """
 SELECT COALESCE(Updated_Company, Company) as Company, COUNT(DISTINCT URL) as Count
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 WHERE Owner = %s
 GROUP BY COALESCE(Updated_Company, Company)
 ORDER BY Count DESC
@@ -68,7 +68,7 @@ LIMIT 15
 
 QUERY_COMPANY_DISTRIBUTION_ALL = """
 SELECT COALESCE(Updated_Company, Company) as Company, COUNT(DISTINCT URL) as Count
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 GROUP BY COALESCE(Updated_Company, Company)
 ORDER BY Count DESC
 LIMIT 15
@@ -77,7 +77,7 @@ LIMIT 15
 # Query to get level-wise distribution
 QUERY_LEVEL_DISTRIBUTION = """
 SELECT Seniority as Level, COUNT(DISTINCT URL) as Count
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 WHERE Owner = %s AND Seniority IS NOT NULL AND Seniority != ''
 GROUP BY Seniority
 ORDER BY Count DESC
@@ -86,7 +86,7 @@ LIMIT 10
 
 QUERY_LEVEL_DISTRIBUTION_ALL = """
 SELECT Seniority as Level, COUNT(DISTINCT URL) as Count
-FROM linkedin_connections
+FROM linkedin_comapanies_extented
 WHERE Seniority IS NOT NULL AND Seniority != ''
 GROUP BY Seniority
 ORDER BY Count DESC
@@ -183,7 +183,7 @@ def get_db_connection():
         host='localhost',
         user='root',
         password='0777',
-        database='connect_project'
+        database='connections'
     )
 
 # ======================== FUNCTION TO FETCH DATA FROM DATABASE ========================

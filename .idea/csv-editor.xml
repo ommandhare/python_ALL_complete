@@ -38,6 +38,34 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Knowledge Graph\datasets\skills_dataset.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Knowledge Graph\output\result.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Knowledge Graph\words.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\LinkedIn\Final_flat_table_NEW.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\LinkedIn\Process\Company_Noralized.csv">
           <value>
             <Attribute>
@@ -53,6 +81,27 @@
           </value>
         </entry>
         <entry key="\LinkedIn\Process\Updated Connection.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\LinkedIn\Process\data\Complete_Data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\LinkedIn\Process\data\Jigar_Vasani_connection.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\LinkedIn\Process\data\Omitted_Records.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

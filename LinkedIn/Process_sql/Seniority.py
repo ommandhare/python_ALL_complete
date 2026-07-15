@@ -1,5 +1,6 @@
 import csv
 import pandas as pd
+import re
 
 pd.set_option('display.max_rows', None)
 pd.set_option('display.max_columns', None)
@@ -120,20 +121,32 @@ def get_levels(df):
 
     }
 
+    # Sort longest keywords first
+    sorted_levels = sorted(
+        levelDict.items(),
+        key=lambda x: len(x[0]),
+        reverse=True
+    )
+
     def extract_levels(position):
 
-        # position = clean_position(position)
+        if pd.isna(position):
+            return []
 
-        foundLevels = []
+        position = str(position)
 
-        # First check full phrase matches
-        for keyword in levelDict:
+        found_levels = []
 
-            if keyword.lower() in position.lower():
+        for keyword, level in sorted_levels:
 
-                foundLevels.append(levelDict[keyword])
+            # Match whole words/phrases only
+            pattern = r'\b' + re.escape(keyword) + r'\b'
 
-        return list(set(foundLevels))
+            if re.search(pattern, position, flags=re.IGNORECASE):
+
+                found_levels.append(level)
+
+        return list(dict.fromkeys(found_levels))
 
 
     # df=pd.read_csv(path)

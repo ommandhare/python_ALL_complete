@@ -41,7 +41,7 @@ QUERY_ALL_COMPANIES=''' SELECT * FROM connections.all_companies '''
 JOIN_QUERY = ''' SELECT c.*,
                  a.company AS original_company,
                  a.country,a.industry FROM connect_project.all_companies a
-                JOIN final_flat_table c
+                RIGHT JOIN final_flat_table c
                 ON a.company=c.Updated_Company
                 and country <> ("nan") and country is not null;
                  '''
@@ -238,7 +238,9 @@ for owner in master_input_df["Owner"].unique():
         )
 
 # print(masterDf)
-masterDf.to_csv("Final_flat_table_NEW.csv")
+masterDf.to_csv("Final_flat_table_NEW_v2.csv")
+
+dataframe_to_mysql(masterDf,table_name="final_flat_table")
 
 
 conn = get_db_connection()

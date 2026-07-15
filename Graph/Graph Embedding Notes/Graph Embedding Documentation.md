@@ -1,6 +1,3 @@
-That's a good idea. Since this is for documentation, don't structure it as "Day 1, Day 2..." because in a company knowledge repository or Word document it should read like a complete learning guide.
-
-I would structure it as follows:
 
 # Graph Embedding: From Fundamentals to Visualization
 

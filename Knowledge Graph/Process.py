@@ -161,11 +161,11 @@ results=[]
 for file in os.listdir(folder):
 
     path=os.path.join(folder,file)
-    print(path)
+    # print(path)
     text=extract_text(path)
     # print(text)
     name=extract_name(text)
-    print(name)
+    # print(name)
     email=extract_email(text)
 
     phone=extract_phone(text)
@@ -173,7 +173,7 @@ for file in os.listdir(folder):
     role=extract_role(text)
 
     skills=extract_skills(text)
-    print(skills)
+    # print(skills)
 
     # score=ats_score(skills)
 
@@ -197,6 +197,6 @@ for file in os.listdir(folder):
 
 df=pd.DataFrame(results)
 
-df.to_csv("output/result.csv",index=False)
+df.to_csv("output/Extracted Skills.csv",index=False)
 
 print(df)

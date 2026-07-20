@@ -54,7 +54,7 @@ for node in G.nodes():
 
     for i in range(5):
 
-        walk = random_walk(G, node, 7)
+        walk = random_walk(G, node, 10)
 
         walks.append(walk)
 
@@ -71,13 +71,15 @@ model = Word2Vec(
 
     vector_size=16,
 
-    window=3,
+    window=5,
 
     min_count=1,
 
-    workers=2,
+    workers=1,
 
-    sg=1
+    sg=1,
+
+    seed=42
 
 )
 # [-0.24849646 -0.18475862]

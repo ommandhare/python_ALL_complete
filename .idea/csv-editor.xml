@@ -38,6 +38,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Knowledge Graph\datasets\resume_roles_dataset.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Knowledge Graph\datasets\skills_dataset.csv">
           <value>
             <Attribute>
@@ -45,7 +52,7 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="\Knowledge Graph\output\result.csv">
+        <entry key="\Knowledge Graph\output\Extracted Skills.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

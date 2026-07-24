@@ -20,7 +20,7 @@ nx.draw(
     node_size=2000
 )
 
-plt.show()
+
 
 node2vec = Node2Vec(
     G,
@@ -36,14 +36,19 @@ node2vec = Node2Vec(
 model = node2vec.fit(
     window=5,
     min_count=1,
-    batch_words=4
+    sg=1,
+    workers=1,
+    seed=42,
+    epochs=5
 )
+
+
 print("Embedding of Node")
 print(model.wv["Om"])
 
 print("Similar To OM....")
 print(model.wv.most_similar("Om"))
 
-
+plt.show()
 
 

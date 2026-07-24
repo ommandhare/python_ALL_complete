@@ -52,6 +52,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Knowledge Graph\input Data Files\Concepts Files\csv files\SQLConceptDictionary.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Knowledge Graph\input Data Files\Role and Skill.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Knowledge Graph\output\Extracted Skills.csv">
           <value>
             <Attribute>
@@ -95,6 +109,13 @@
           </value>
         </entry>
         <entry key="\LinkedIn\Process\data\Complete_Data.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\LinkedIn\Process\data\HarishNair_Connections.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

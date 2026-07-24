@@ -3,6 +3,12 @@ import matplotlib.pyplot as plt
 import random
 from gensim.models import Word2Vec
 from sklearn.decomposition import PCA
+import numpy as np
+
+random.seed(42)
+np.random.seed(42)
+
+
 
 def random_walk(graph, start_node, walk_length):
 
@@ -52,9 +58,9 @@ walks = []
 
 for node in G.nodes():
 
-    for i in range(5):
+    for i in range(10):
 
-        walk = random_walk(G, node, 10)
+        walk = random_walk(G, node, 5)
 
         walks.append(walk)
 
@@ -79,7 +85,9 @@ model = Word2Vec(
 
     sg=1,
 
-    seed=42
+    seed=42,
+
+    epochs=5
 
 )
 # [-0.24849646 -0.18475862]
@@ -106,5 +114,5 @@ for node in G.nodes():
 print(model.wv.most_similar("Om"))
 
 
-
+print("Similar To OM")
 plt.show()

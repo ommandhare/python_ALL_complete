@@ -87,6 +87,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\LinkedIn\Final_flat_table_NEW_v2.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\LinkedIn\Mandar_kale_connection.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\LinkedIn\Process\Company_Noralized.csv">
           <value>
             <Attribute>
@@ -130,6 +144,13 @@
           </value>
         </entry>
         <entry key="\LinkedIn\Process\data\Omitted_Records.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\LinkedIn\Process\data\Partial_Data.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />

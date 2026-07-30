@@ -101,7 +101,7 @@ with driver.session(database="conceptdictionary") as session:
         # print(type(skill))
         skillList=skill.split(",")
         print("Skill Which user Already have............")
-        print(skillList)
+        pprint(skillList)
 
         result = session.run(
             neo_query,

@@ -3,10 +3,17 @@ import pdfplumber
 from docx import Document
 import dateparser
 import json
+from pprint import pprint
+import spacy
 
 ##########################################################################
 # READ RESUME
 ##########################################################################
+
+nlp = spacy.load("en_core_web_lg")
+
+
+
 
 def read_pdf(file_path):
     text = ""
@@ -577,8 +584,6 @@ def parse_resume_split(file_path):
 
     return split_work_exp
 
-
-
 def save_json(data, filename):
 
     with open(filename, "w", encoding="utf-8") as file:
@@ -593,44 +598,8 @@ def save_json(data, filename):
 
 
 
+resume = parse_resume(r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Knowledge Graph\resumes\resume.docx")
 
-from pprint import pprint
-resume = parse_resume(r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Knowledge Graph\resumes\SanjeetSahasrabudheResume.docx")
+Splitwork = parse_resume_split(r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Knowledge Graph\resumes\resume.docx")
 
-Splitwork = parse_resume_split(r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Knowledge Graph\resumes\SanjeetSahasrabudheResume.docx")
-
-# print(resume)
-# for k, v in resume.items():
-#      print("="*60)
-#      pprint(k)
-#      pprint(v,width=150)
-print(resume)
-
-
-with open("Resume.json", "w", encoding="utf-8") as file:
-    json.dump(
-        resume,
-        file,
-        indent=4,
-        ensure_ascii=False
-    )
-
-with open("SplitWork.json", "w", encoding="utf-8") as file:
-
-    json.dump(
-        Splitwork,
-        file,
-        indent=4,
-        ensure_ascii=False
-    )
-
-
-print("Both JSON files created")
-
-# text = read_resume(r"C:\Users\Om Mandhare\PycharmProjects\python_ALL_complete\Knowledge Graph\resumes\OmMandhareResume.docx")
-# projects = parse_projects(text)
-
-# from pprint import pprint
-
-
-# pprint(projects)
+pprint(resume)

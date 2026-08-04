@@ -38,6 +38,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\Knowledge Graph\Embedding\KG_Node2Vec.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\Knowledge Graph\Embedding\nodes.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\Knowledge Graph\datasets\resume_roles_dataset.csv">
           <value>
             <Attribute>

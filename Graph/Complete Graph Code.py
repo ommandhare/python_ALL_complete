@@ -43,11 +43,15 @@ model = node2vec.fit(
 )
 
 
-print("Embedding of Node")
+print("Embedding of Node ")
 print(model.wv["Om"])
+print("--" * 20)
+# print(model.wv["Python"])
+# print("--" * 20)
+# print(model.wv["Rahul"])
 
-print("Similar To OM....")
-print(model.wv.most_similar("Om"))
+# print("Similar To OM....")
+# print(model.wv.most_similar("Om"))
 
 plt.show()
 
